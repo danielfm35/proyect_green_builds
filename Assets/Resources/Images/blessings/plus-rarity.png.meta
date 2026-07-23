@@ -1,0 +1,689 @@
+fileFormatVersion: 2
+guid: fae9c29c3f39c4c4fb98ce8a4d53c2ca
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -4098619969074628301
+    second: plus-rarity_0
+  - first:
+      213: -6646792269787516847
+    second: plus-rarity_1
+  - first:
+      213: -589672896062618259
+    second: plus-rarity_2
+  - first:
+      213: 5346766400282062852
+    second: plus-rarity_3
+  - first:
+      213: 6045943033869353226
+    second: plus-rarity_4
+  - first:
+      213: 3268599140982638927
+    second: plus-rarity_5
+  - first:
+      213: -6156950837755630540
+    second: plus-rarity_6
+  - first:
+      213: 700778600715515132
+    second: plus-rarity_7
+  - first:
+      213: -7752134468449773221
+    second: plus-rarity_8
+  - first:
+      213: -6829778315996026380
+    second: plus-rarity_9
+  - first:
+      213: 4708045351009436571
+    second: plus-rarity_10
+  - first:
+      213: 8594476663343117291
+    second: plus-rarity_11
+  - first:
+      213: 5335817605657821373
+    second: plus-rarity_12
+  - first:
+      213: 4362102209128754503
+    second: plus-rarity_13
+  - first:
+      213: 1905485967302536553
+    second: plus-rarity_14
+  - first:
+      213: -7388658418132781373
+    second: plus-rarity_15
+  - first:
+      213: 378340109544091588
+    second: plus-rarity_16
+  - first:
+      213: 6002865417204558627
+    second: plus-rarity_17
+  - first:
+      213: -1533123765961880121
+    second: plus-rarity_18
+  - first:
+      213: 7586542499210176577
+    second: plus-rarity_19
+  - first:
+      213: -4716328401946797897
+    second: plus-rarity_20
+  - first:
+      213: -2619369189126098690
+    second: plus-rarity_21
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 1
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 256
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: plus-rarity_0
+      rect:
+        serializedVersion: 2
+        x: 28
+        y: 2043
+        width: 27
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 339fbf18ad6ce17c0800000000000000
+      internalID: -4098619969074628301
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: plus-rarity_1
+      rect:
+        serializedVersion: 2
+        x: 100
+        y: 2043
+        width: 132
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 150b08795a9d1c3a0800000000000000
+      internalID: -6646792269787516847
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: plus-rarity_2
+      rect:
+        serializedVersion: 2
+        x: 634
+        y: 2043
+        width: 30
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d65038010af01d7f0800000000000000
+      internalID: -589672896062618259
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: plus-rarity_3
+      rect:
+        serializedVersion: 2
+        x: 837
+        y: 2043
+        width: 123
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4007ec176b7833a40800000000000000
+      internalID: 5346766400282062852
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: plus-rarity_4
+      rect:
+        serializedVersion: 2
+        x: 1144
+        y: 1541
+        width: 482
+        height: 507
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a01c702182187e350800000000000000
+      internalID: 6045943033869353226
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: plus-rarity_5
+      rect:
+        serializedVersion: 2
+        x: 1550
+        y: 2043
+        width: 214
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f49ca67d9956c5d20800000000000000
+      internalID: 3268599140982638927
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: plus-rarity_6
+      rect:
+        serializedVersion: 2
+        x: 1928
+        y: 2043
+        width: 27
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 43c280085dd1e8aa0800000000000000
+      internalID: -6156950837755630540
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: plus-rarity_7
+      rect:
+        serializedVersion: 2
+        x: 1957
+        y: 2043
+        width: 28
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cf4f7d9ac6aa9b900800000000000000
+      internalID: 700778600715515132
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: plus-rarity_8
+      rect:
+        serializedVersion: 2
+        x: 2031
+        y: 2043
+        width: 17
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b595df406c2ea6490800000000000000
+      internalID: -7752134468449773221
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: plus-rarity_9
+      rect:
+        serializedVersion: 2
+        x: 1035
+        y: 1554
+        width: 135
+        height: 148
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4f9246caec0c731a0800000000000000
+      internalID: -6829778315996026380
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: plus-rarity_10
+      rect:
+        serializedVersion: 2
+        x: 1183
+        y: 1600
+        width: 14
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b93c85d6d46565140800000000000000
+      internalID: 4708045351009436571
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: plus-rarity_11
+      rect:
+        serializedVersion: 2
+        x: 1665
+        y: 1553
+        width: 71
+        height: 93
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: be373f46df6b54770800000000000000
+      internalID: 8594476663343117291
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: plus-rarity_12
+      rect:
+        serializedVersion: 2
+        x: 298
+        y: 1015
+        width: 478
+        height: 478
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: db0828b87d1ac0a40800000000000000
+      internalID: 5335817605657821373
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: plus-rarity_13
+      rect:
+        serializedVersion: 2
+        x: 953
+        y: 1394
+        width: 137
+        height: 94
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 74de01909dc498c30800000000000000
+      internalID: 4362102209128754503
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: plus-rarity_14
+      rect:
+        serializedVersion: 2
+        x: 1097
+        y: 968
+        width: 607
+        height: 590
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 96d2f8d3465a17a10800000000000000
+      internalID: 1905485967302536553
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: plus-rarity_15
+      rect:
+        serializedVersion: 2
+        x: 1259
+        y: 889
+        width: 281
+        height: 510
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3c6fe74c056367990800000000000000
+      internalID: -7388658418132781373
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: plus-rarity_16
+      rect:
+        serializedVersion: 2
+        x: 1693
+        y: 1345
+        width: 139
+        height: 120
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4cf68a93352204500800000000000000
+      internalID: 378340109544091588
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: plus-rarity_17
+      rect:
+        serializedVersion: 2
+        x: 812
+        y: 1153
+        width: 273
+        height: 202
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 32b64fada467e4350800000000000000
+      internalID: 6002865417204558627
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: plus-rarity_18
+      rect:
+        serializedVersion: 2
+        x: 1708
+        y: 1131
+        width: 110
+        height: 123
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7cd0225ce0049bae0800000000000000
+      internalID: -1533123765961880121
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: plus-rarity_19
+      rect:
+        serializedVersion: 2
+        x: 708
+        y: 952
+        width: 351
+        height: 167
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 148a3d23530d84960800000000000000
+      internalID: 7586542499210176577
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: plus-rarity_20
+      rect:
+        serializedVersion: 2
+        x: 1714
+        y: 1022
+        width: 84
+        height: 65
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7b810ed7e4c3c8eb0800000000000000
+      internalID: -4716328401946797897
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: plus-rarity_21
+      rect:
+        serializedVersion: 2
+        x: 846
+        y: 924
+        width: 169
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ef0398ab99126abd0800000000000000
+      internalID: -2619369189126098690
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      plus-rarity_0: -4098619969074628301
+      plus-rarity_1: -6646792269787516847
+      plus-rarity_10: 4708045351009436571
+      plus-rarity_11: 8594476663343117291
+      plus-rarity_12: 5335817605657821373
+      plus-rarity_13: 4362102209128754503
+      plus-rarity_14: 1905485967302536553
+      plus-rarity_15: -7388658418132781373
+      plus-rarity_16: 378340109544091588
+      plus-rarity_17: 6002865417204558627
+      plus-rarity_18: -1533123765961880121
+      plus-rarity_19: 7586542499210176577
+      plus-rarity_2: -589672896062618259
+      plus-rarity_20: -4716328401946797897
+      plus-rarity_21: -2619369189126098690
+      plus-rarity_3: 5346766400282062852
+      plus-rarity_4: 6045943033869353226
+      plus-rarity_5: 3268599140982638927
+      plus-rarity_6: -6156950837755630540
+      plus-rarity_7: 700778600715515132
+      plus-rarity_8: -7752134468449773221
+      plus-rarity_9: -6829778315996026380
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

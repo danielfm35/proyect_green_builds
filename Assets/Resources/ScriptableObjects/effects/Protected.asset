@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b7306abc91e655a4fbc80cb04f495423, type: 3}
+  m_Name: Protected
+  m_EditorClassIdentifier: Assembly-CSharp::AnvilEffectData
+  id: protect
+  effectName: Protect
+  description: Adds a protection layer to affected items. The next destroy effect removes the protection instead of destroying the item.
+  icon: {fileID: 21300000, guid: f6fcf076bd2938e46af952bec36b87c5, type: 3}
+  background: {fileID: 3411328785721398298, guid: c89b1d1730fe6e745b3434723434e6c8, type: 3}
+  backgroundColor: {r: 1, g: 1, b: 1, a: 1}
+  kind: 0
+  action: {fileID: 0}
+  effectType: 4
+  raritySteps: 1
+  spawnWeight: 1

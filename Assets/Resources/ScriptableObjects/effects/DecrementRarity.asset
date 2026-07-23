@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b7306abc91e655a4fbc80cb04f495423, type: 3}
+  m_Name: DecrementRarity
+  m_EditorClassIdentifier: Assembly-CSharp::AnvilEffectData
+  id: decrement_rarity
+  effectName: Decrement Rarity
+  description: 
+  icon: {fileID: 21300000, guid: 99b510efa7ec8e34489dc9ba10e38cf3, type: 3}
+  background: {fileID: 6894929934875589815, guid: 95322bc7ddd59424aa0eb634711ba99b, type: 3}
+  backgroundColor: {r: 1, g: 1, b: 1, a: 1}
+  kind: 1
+  action: {fileID: 0}
+  effectType: 1
+  raritySteps: 1
+  spawnWeight: 1

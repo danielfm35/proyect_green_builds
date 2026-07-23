@@ -1,0 +1,56 @@
+public enum StatType
+{
+    Strength,
+    AttackSpeed,
+    Armor,
+    HP,
+    CritChance,
+    MagicResist,
+    CriticalDamage,
+    PiercingDamage,
+    SlashingDamage,
+    BluntDamage,
+    Accuracy,
+    Dodge,
+    Lifesteal,
+    BlockChance,
+    ArmorPenetration,
+    MeleeDamage,
+    RangeDamage,
+    CounterattackDamage,
+    BleedResistance,
+    BurnResistance,
+    FreezeResistance,
+    ShockResistance,
+    PoisonResistance,
+    BleedChance,
+    BurnChance,
+    FreezeChance,
+    ShockChance,
+    PoisonChance,
+    BleedDamage,
+    BurnDamage,
+    FreezeDamage,
+    ShockDamage,
+    PoisonDamage,
+    BleedDuration,
+    BurnDuration,
+    FreezeDuration,
+    ShockDuration,
+    PoisonDuration,
+    BleedCooldown,
+    BurnCooldown,
+    FreezeCooldown,
+    ShockCooldown,
+    PoisonCooldown,
+    StunChance,
+    StunDuration,
+    StunCooldown,
+
+
+
+
+
+
+
+}

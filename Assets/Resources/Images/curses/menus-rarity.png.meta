@@ -1,0 +1,533 @@
+fileFormatVersion: 2
+guid: 99b510efa7ec8e34489dc9ba10e38cf3
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 5559763292370468438
+    second: menus-rarity_0
+  - first:
+      213: -173351740836975967
+    second: menus-rarity_1
+  - first:
+      213: 4785896885128025947
+    second: menus-rarity_2
+  - first:
+      213: -5064762075153828941
+    second: menus-rarity_3
+  - first:
+      213: -5331206588878920061
+    second: menus-rarity_4
+  - first:
+      213: -8983885913033063405
+    second: menus-rarity_5
+  - first:
+      213: 7563120854604699492
+    second: menus-rarity_6
+  - first:
+      213: 3763183071918208608
+    second: menus-rarity_7
+  - first:
+      213: 6952438042281811078
+    second: menus-rarity_8
+  - first:
+      213: -2591270354197628103
+    second: menus-rarity_9
+  - first:
+      213: -2627917607336402458
+    second: menus-rarity_10
+  - first:
+      213: 8758814285883008224
+    second: menus-rarity_11
+  - first:
+      213: 7517865900750152187
+    second: menus-rarity_12
+  - first:
+      213: -8892638681656204828
+    second: menus-rarity_13
+  - first:
+      213: 3962908404578693196
+    second: menus-rarity_14
+  - first:
+      213: -5001270013892112965
+    second: menus-rarity_15
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 1
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 256
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: menus-rarity_0
+      rect:
+        serializedVersion: 2
+        x: 199
+        y: 1552
+        width: 157
+        height: 164
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 65e7ffce14f382d40800000000000000
+      internalID: 5559763292370468438
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: menus-rarity_1
+      rect:
+        serializedVersion: 2
+        x: 360
+        y: 1525
+        width: 507
+        height: 284
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1aa673a9281289df0800000000000000
+      internalID: -173351740836975967
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: menus-rarity_2
+      rect:
+        serializedVersion: 2
+        x: 894
+        y: 1578
+        width: 120
+        height: 129
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b5754b93cdbea6240800000000000000
+      internalID: 4785896885128025947
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: menus-rarity_3
+      rect:
+        serializedVersion: 2
+        x: 1177
+        y: 1512
+        width: 15
+        height: 131
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3b3f5961ab956b9b0800000000000000
+      internalID: -5064762075153828941
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: menus-rarity_4
+      rect:
+        serializedVersion: 2
+        x: 1206
+        y: 1416
+        width: 131
+        height: 416
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 38666a57adfb306b0800000000000000
+      internalID: -5331206588878920061
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: menus-rarity_5
+      rect:
+        serializedVersion: 2
+        x: 1352
+        y: 1513
+        width: 18
+        height: 171
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 314470b5c53d25380800000000000000
+      internalID: -8983885913033063405
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: menus-rarity_6
+      rect:
+        serializedVersion: 2
+        x: 268
+        y: 850
+        width: 685
+        height: 701
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 467df0c985a95f860800000000000000
+      internalID: 7563120854604699492
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: menus-rarity_7
+      rect:
+        serializedVersion: 2
+        x: 1473
+        y: 1430
+        width: 102
+        height: 112
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 066b272d013893430800000000000000
+      internalID: 3763183071918208608
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: menus-rarity_8
+      rect:
+        serializedVersion: 2
+        x: 139
+        y: 1277
+        width: 132
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 68c9e1950950c7060800000000000000
+      internalID: 6952438042281811078
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: menus-rarity_9
+      rect:
+        serializedVersion: 2
+        x: 445
+        y: 750
+        width: 331
+        height: 638
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 93bbc0d8755f90cd0800000000000000
+      internalID: -2591270354197628103
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: menus-rarity_10
+      rect:
+        serializedVersion: 2
+        x: 945
+        y: 1284
+        width: 124
+        height: 103
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6e128b30cd2c78bd0800000000000000
+      internalID: -2627917607336402458
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: menus-rarity_11
+      rect:
+        serializedVersion: 2
+        x: 1276
+        y: 860
+        width: 538
+        height: 528
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0e46ca3df2f8d8970800000000000000
+      internalID: 8758814285883008224
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: menus-rarity_12
+      rect:
+        serializedVersion: 2
+        x: 120
+        y: 1121
+        width: 103
+        height: 112
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bf12c339433d45860800000000000000
+      internalID: 7517865900750152187
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: menus-rarity_13
+      rect:
+        serializedVersion: 2
+        x: 993
+        y: 1040
+        width: 245
+        height: 226
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4e1ebf7fb30079480800000000000000
+      internalID: -8892638681656204828
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: menus-rarity_14
+      rect:
+        serializedVersion: 2
+        x: 122
+        y: 951
+        width: 146
+        height: 144
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c40b25492341ff630800000000000000
+      internalID: 3962908404578693196
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: menus-rarity_15
+      rect:
+        serializedVersion: 2
+        x: 952
+        y: 931
+        width: 123
+        height: 126
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bbdc5249b6be79ab0800000000000000
+      internalID: -5001270013892112965
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      menus-rarity_0: 5559763292370468438
+      menus-rarity_1: -173351740836975967
+      menus-rarity_10: -2627917607336402458
+      menus-rarity_11: 8758814285883008224
+      menus-rarity_12: 7517865900750152187
+      menus-rarity_13: -8892638681656204828
+      menus-rarity_14: 3962908404578693196
+      menus-rarity_15: -5001270013892112965
+      menus-rarity_2: 4785896885128025947
+      menus-rarity_3: -5064762075153828941
+      menus-rarity_4: -5331206588878920061
+      menus-rarity_5: -8983885913033063405
+      menus-rarity_6: 7563120854604699492
+      menus-rarity_7: 3763183071918208608
+      menus-rarity_8: 6952438042281811078
+      menus-rarity_9: -2591270354197628103
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
