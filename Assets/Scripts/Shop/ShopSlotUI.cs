@@ -241,14 +241,36 @@ public class ShopSlotUI : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
             return;
         }
 
+        ShopManager shopManager = FindFirstObjectByType<ShopManager>();
+        int cost = shopManager != null
+            ? shopManager.GetCurrentItemCost(itemInstance.rarity)
+            : ShopManager.GetGoldCost(itemInstance.rarity);
+
         if (priceIconImage != null)
-            priceIconImage.enabled = priceIconImage.sprite != null;
+            priceIconImage.enabled = cost > 0 && priceIconImage.sprite != null;
 
         if (priceText != null)
         {
             priceText.enabled = true;
-            priceText.text = ShopManager.GetGoldCost(itemInstance.rarity).ToString();
+            priceText.text = cost > 0 ? cost.ToString() : "GRATIS";
+
+            RectTransform priceRect = priceText.rectTransform;
+            priceRect.anchoredPosition = cost > 0
+                ? new Vector2(36f, 5f)
+                : new Vector2(8f, 5f);
+            priceRect.sizeDelta = cost > 0
+                ? new Vector2(42f, 32f)
+                : new Vector2(82f, 32f);
+            priceText.alignment = cost > 0
+                ? TextAlignmentOptions.Left
+                : TextAlignmentOptions.Center;
         }
+    }
+
+    public void RefreshPriceVisual()
+    {
+        if (currentItemInstance != null)
+            UpdatePriceVisual(currentItemInstance);
     }
 
     private void DisablePriceVisual()

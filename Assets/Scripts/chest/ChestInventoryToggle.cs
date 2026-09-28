@@ -1,158 +1,191 @@
-using System.Collections;
-using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
+// Keeps the serialized scene reference while replacing the old chest toggle with a permanent dock.
 public sealed class ChestInventoryToggle : MonoBehaviour, IPointerClickHandler
 {
     [SerializeField] private RectTransform screenContainer;
-    [SerializeField] private RectTransform topSection;
-    [SerializeField] private RectTransform secondarySection;
     [SerializeField] private RectTransform inventoryPanel;
-    [SerializeField, Min(0.05f)] private float transitionDuration = 0.3f;
-    [SerializeField] private float slideDistance = 90f;
+    [SerializeField, HideInInspector] private bool layoutApplied;
 
-    private readonly List<RectTransform> originalSections = new();
-    private readonly List<Vector2> originalPositions = new();
-    private readonly List<CanvasGroup> originalGroups = new();
+    public RectTransform EnchantmentTarget => inventoryPanel != null
+        ? inventoryPanel.Find("EnchantmentInventorySection") as RectTransform : null;
+    public RectTransform ModifierTarget => inventoryPanel != null
+        ? inventoryPanel.Find("ModifierInventorySection") as RectTransform : null;
 
-    private CanvasGroup inventoryGroup;
-    private Coroutine transition;
-    private bool inventoryVisible;
-
-    private IEnumerator Start()
+    private void Start()
     {
-        // Wait until the parent VerticalLayoutGroup has placed both sections.
-        yield return null;
-        CacheOriginalSections();
-        InitializeInventoryPanel();
+        if (!layoutApplied) ApplyPermanentLayout();
     }
 
-    public void OnPointerClick(PointerEventData eventData)
+    public bool ApplyPermanentLayout()
     {
-        if (eventData.button != PointerEventData.InputButton.Left)
-            return;
+        if (screenContainer == null || inventoryPanel == null) return false;
 
-        if (transition != null)
-            StopCoroutine(transition);
+        // Empty layout backgrounds must not intercept the Start Battle button.
+        if (screenContainer.TryGetComponent(out Image screenBackground)) screenBackground.raycastTarget = false;
+        Transform top = screenContainer.Find("TopSection");
+        if (top != null && top.TryGetComponent(out Image topBackground)) topBackground.raycastTarget = false;
 
-        inventoryVisible = !inventoryVisible;
-        transition = StartCoroutine(AnimateView(inventoryVisible));
-    }
+        RectTransform anvil = screenContainer.Find("AnvilSection") as RectTransform;
+        if (anvil == null) return false;
+        Transform bottom = transform.parent;
+        RectTransform actions = anvil.Find("ForgeActionButtons") as RectTransform;
+        if (actions == null) actions = bottom.Find("ForgeActionButtons") as RectTransform;
+        if (actions == null) return false;
 
-    private void CacheOriginalSections()
-    {
-        originalSections.Clear();
-        originalPositions.Clear();
-        originalGroups.Clear();
+        // The chest has no visible or interactive role in the permanent inventory.
+        foreach (Graphic graphic in GetComponentsInChildren<Graphic>()) graphic.enabled = false;
+        UIHoverScale hover = GetComponent<UIHoverScale>();
+        if (hover != null) hover.enabled = false;
 
-        AddOriginalSection(topSection);
-        AddOriginalSection(secondarySection);
-    }
-
-    private void AddOriginalSection(RectTransform section)
-    {
-        if (section == null)
-            return;
-
-        CanvasGroup group = section.GetComponent<CanvasGroup>();
-        if (group == null)
-            group = section.gameObject.AddComponent<CanvasGroup>();
-
-        originalSections.Add(section);
-        originalPositions.Add(section.anchoredPosition);
-        originalGroups.Add(group);
-    }
-
-    private void InitializeInventoryPanel()
-    {
-        if (inventoryPanel == null)
+        inventoryPanel.SetParent(anvil, false);
+        inventoryPanel.SetAsLastSibling();
+        Stretch(inventoryPanel, new Vector2(0.725f, 0f), Vector2.one, new Vector2(14f, 16f), new Vector2(-14f, -16f));
+        LayoutElement layout = inventoryPanel.GetComponent<LayoutElement>();
+        if (layout != null) layout.ignoreLayout = true;
+        Image background = inventoryPanel.GetComponent<Image>();
+        if (background != null)
         {
-            Debug.LogError("[ChestInventoryToggle] Falta asignar ChestInventorySection en Inventory Panel.", this);
-            return;
+            background.color = new Color(0.065f, 0.075f, 0.1f, 1f);
+            background.raycastTarget = false;
         }
+        ShowInventory();
+        Canvas.ForceUpdateCanvases();
+        ChestInventoryGridUI grid = inventoryPanel.GetComponentInChildren<ChestInventoryGridUI>(true);
+        if (grid != null) grid.ConfigureDockedLayout();
 
-        inventoryPanel.anchoredPosition = new Vector2(slideDistance, 0f);
-
-        RectTransform inventoryGrid = inventoryPanel.Find("InventoryGrid") as RectTransform;
-        if (inventoryGrid != null)
+        if (actions != null)
         {
-            inventoryGrid.anchorMin = new Vector2(0.5f, 0.5f);
-            inventoryGrid.anchorMax = new Vector2(0.5f, 0.5f);
-            inventoryGrid.pivot = new Vector2(0.5f, 0.5f);
-            inventoryGrid.anchoredPosition = Vector2.zero;
+            actions.SetParent(bottom, false);
+            Stretch(actions, new Vector2(0.775f, 0f), Vector2.one, new Vector2(12f, 25f), new Vector2(-22f, -25f));
+            StyleButton(actions.Find("EnchantmentsButton") as RectTransform, 0, "Images/UI/grimorio", new Color(0.72f, 0.51f, 1f));
+            StyleButton(actions.Find("ModifiersButton") as RectTransform, 1, "Images/UI/tongs", new Color(0.3f, 0.78f, 0.94f));
+            StyleButton(actions.Find("TransmuteButton") as RectTransform, 2, "Images/UI/anvil", new Color(1f, 0.72f, 0.32f));
         }
+        LayoutRebuilder.ForceRebuildLayoutImmediate(inventoryPanel);
+        Canvas.ForceUpdateCanvases();
+        layoutApplied = true;
+        return true;
+    }
 
-        inventoryGroup = inventoryPanel.GetComponent<CanvasGroup>();
-        if (inventoryGroup == null)
+#if UNITY_EDITOR
+    [UnityEditor.MenuItem("Tools/Builds Battles/Aplicar y guardar inventario en Canvas")]
+    private static void ApplyAndSaveEditorLayout()
+    {
+        if (Application.isPlaying)
         {
-            Debug.LogError("[ChestInventoryToggle] ChestInventorySection necesita un CanvasGroup.", inventoryPanel);
+            Debug.LogWarning("Sal de Play para guardar la distribucion en la escena.");
             return;
         }
-
-        inventoryGroup.alpha = 0f;
-        inventoryGroup.interactable = false;
-        inventoryGroup.blocksRaycasts = false;
-    }
-
-    private IEnumerator AnimateView(bool showInventory)
-    {
-        if (inventoryPanel == null)
-            yield break;
-
-        float elapsed = 0f;
-        float inventoryStartAlpha = inventoryGroup.alpha;
-        float inventoryEndAlpha = showInventory ? 1f : 0f;
-        Vector2 inventoryStartPosition = inventoryPanel.anchoredPosition;
-        Vector2 inventoryEndPosition = showInventory ? Vector2.zero : new Vector2(slideDistance, 0f);
-
-        float[] sectionStartAlpha = new float[originalGroups.Count];
-        Vector2[] sectionStartPosition = new Vector2[originalSections.Count];
-        for (int i = 0; i < originalGroups.Count; i++)
+        ChestInventoryToggle dock = FindFirstObjectByType<ChestInventoryToggle>();
+        if (dock == null || dock.screenContainer == null)
         {
-            sectionStartAlpha[i] = originalGroups[i].alpha;
-            sectionStartPosition[i] = originalSections[i].anchoredPosition;
-            originalGroups[i].interactable = false;
-            originalGroups[i].blocksRaycasts = false;
+            Debug.LogError("No se encontro el inventario en la escena abierta.");
+            return;
         }
+        UnityEditor.Undo.RegisterFullObjectHierarchyUndo(dock.screenContainer.root.gameObject, "Distribuir inventario en Canvas");
+        if (!dock.ApplyPermanentLayout())
+        {
+            Debug.LogError("Faltan referencias del Canvas para aplicar la distribucion.");
+            return;
+        }
+        foreach (Transform child in dock.screenContainer.root.GetComponentsInChildren<Transform>(true))
+        {
+            UnityEditor.EditorUtility.SetDirty(child.gameObject);
+            foreach (Component component in child.GetComponents<Component>())
+                if (component != null) UnityEditor.EditorUtility.SetDirty(component);
+        }
+        UnityEditor.SceneManagement.EditorSceneManager.MarkSceneDirty(dock.gameObject.scene);
+        bool saved = UnityEditor.SceneManagement.EditorSceneManager.SaveScene(dock.gameObject.scene);
+        UnityEditor.Selection.activeGameObject = dock.inventoryPanel.gameObject;
+        UnityEditor.SceneView.RepaintAll();
+        if (saved) Debug.Log("Inventario y botones guardados en el Canvas, visibles sin entrar en Play.");
+    }
+#endif
 
+    // Legacy callers cannot close the permanent inventory.
+    public void OnPointerClick(PointerEventData eventData) { }
+    public void HideInventory() => ShowInventory();
+    public void ShowInventory()
+    {
+        if (inventoryPanel == null) return;
         inventoryPanel.gameObject.SetActive(true);
-        inventoryGroup.interactable = false;
-        inventoryGroup.blocksRaycasts = false;
+        CanvasGroup group = inventoryPanel.GetComponent<CanvasGroup>();
+        if (group == null) group = inventoryPanel.gameObject.AddComponent<CanvasGroup>();
+        group.alpha = 1f;
+        group.interactable = true;
+        group.blocksRaycasts = true;
+    }
 
-        while (elapsed < transitionDuration)
+    private static void StyleButton(RectTransform rect, int index, string iconPath, Color accent)
+    {
+        if (rect == null) return;
+        Stretch(rect, new Vector2(index / 3f, 0f), new Vector2((index + 1) / 3f, 1f), new Vector2(5f, 0f), new Vector2(-5f, 0f));
+        Image face = rect.GetComponent<Image>();
+        if (face != null) face.color = Color.white;
+        Button button = rect.GetComponent<Button>();
+        if (button != null)
         {
-            elapsed += Time.unscaledDeltaTime;
-            float t = Mathf.SmoothStep(0f, 1f, Mathf.Clamp01(elapsed / transitionDuration));
-
-            inventoryGroup.alpha = Mathf.Lerp(inventoryStartAlpha, inventoryEndAlpha, t);
-            inventoryPanel.anchoredPosition = Vector2.LerpUnclamped(inventoryStartPosition, inventoryEndPosition, t);
-
-            for (int i = 0; i < originalGroups.Count; i++)
-            {
-                float targetAlpha = showInventory ? 0f : 1f;
-                Vector2 targetPosition = originalPositions[i] + (showInventory ? Vector2.left * slideDistance : Vector2.zero);
-                originalGroups[i].alpha = Mathf.Lerp(sectionStartAlpha[i], targetAlpha, t);
-                originalSections[i].anchoredPosition = Vector2.LerpUnclamped(sectionStartPosition[i], targetPosition, t);
-            }
-
-            yield return null;
+            button.transition = Selectable.Transition.ColorTint;
+            ColorBlock colors = button.colors;
+            colors.normalColor = new Color(0.105f, 0.125f, 0.18f);
+            colors.highlightedColor = Color.Lerp(colors.normalColor, accent, 0.32f);
+            colors.selectedColor = colors.highlightedColor;
+            colors.pressedColor = Color.Lerp(colors.normalColor, accent, 0.5f);
+            colors.disabledColor = new Color(0.12f, 0.12f, 0.14f, 0.5f);
+            colors.fadeDuration = 0.12f;
+            button.colors = colors;
         }
-
-        inventoryGroup.alpha = inventoryEndAlpha;
-        inventoryPanel.anchoredPosition = inventoryEndPosition;
-        inventoryGroup.interactable = showInventory;
-        inventoryGroup.blocksRaycasts = showInventory;
-
-        for (int i = 0; i < originalGroups.Count; i++)
+        Outline outline = rect.GetComponent<Outline>();
+        if (outline != null)
         {
-            originalGroups[i].alpha = showInventory ? 0f : 1f;
-            originalSections[i].anchoredPosition = originalPositions[i] + (showInventory ? Vector2.left * slideDistance : Vector2.zero);
-            originalGroups[i].interactable = !showInventory;
-            originalGroups[i].blocksRaycasts = !showInventory;
+            outline.effectColor = Color.Lerp(new Color(0.1f, 0.12f, 0.16f), accent, 0.6f);
+            outline.effectDistance = new Vector2(1f, -1f);
         }
+        TextMeshProUGUI label = rect.GetComponentInChildren<TextMeshProUGUI>();
+        if (label != null)
+        {
+            Stretch(label.rectTransform, Vector2.zero, new Vector2(1f, 0.4f), new Vector2(4f, 8f), new Vector2(-4f, 0f));
+            label.enableAutoSizing = true;
+            label.fontSizeMin = 10f;
+            label.fontSizeMax = 16f;
+            label.fontStyle = FontStyles.Bold;
+            label.alignment = TextAlignmentOptions.Center;
+            label.color = new Color(0.95f, 0.96f, 1f);
+            label.raycastTarget = false;
+        }
+        Transform existingIcon = rect.Find("ActionIcon");
+        GameObject iconObject = existingIcon != null ? existingIcon.gameObject
+            : new GameObject("ActionIcon", typeof(RectTransform), typeof(CanvasRenderer), typeof(Image));
+        iconObject.layer = rect.gameObject.layer;
+        iconObject.transform.SetParent(rect, false);
+        RectTransform icon = iconObject.GetComponent<RectTransform>();
+        Stretch(icon, new Vector2(0.18f, 0.4f), new Vector2(0.82f, 0.92f), Vector2.zero, Vector2.zero);
+        Image iconImage = iconObject.GetComponent<Image>();
+        iconImage.sprite = Resources.Load<Sprite>(iconPath);
+        iconImage.preserveAspect = true;
+        iconImage.raycastTarget = false;
 
-        transition = null;
+        Transform existingLine = rect.Find("Accent");
+        GameObject lineObject = existingLine != null ? existingLine.gameObject
+            : new GameObject("Accent", typeof(RectTransform), typeof(CanvasRenderer), typeof(Image));
+        lineObject.layer = rect.gameObject.layer;
+        lineObject.transform.SetParent(rect, false);
+        Stretch(lineObject.GetComponent<RectTransform>(), new Vector2(0.15f, 1f), new Vector2(0.85f, 1f), new Vector2(0f, -3f), Vector2.zero);
+        lineObject.GetComponent<Image>().color = accent;
+        lineObject.GetComponent<Image>().raycastTarget = false;
+    }
+
+    private static void Stretch(RectTransform rect, Vector2 min, Vector2 max, Vector2 insetMin, Vector2 insetMax)
+    {
+        rect.anchorMin = min;
+        rect.anchorMax = max;
+        rect.pivot = new Vector2(0.5f, 0.5f);
+        rect.offsetMin = insetMin;
+        rect.offsetMax = insetMax;
+        rect.localScale = Vector3.one;
     }
 }

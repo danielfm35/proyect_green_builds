@@ -13,6 +13,8 @@ public class DraggedItemVisual : MonoBehaviour, IBeginDragHandler, IDragHandler,
     [SerializeField] private Image placementRuleIndicatorImage;
     [SerializeField] private Image protectionOverlayImage;
     [SerializeField] private Image burnOverlayImage;
+    [SerializeField] private Image enchantmentCapacityIndicatorImage;
+    private EnchantmentCapacityGlow enchantmentCapacityGlow;
     [SerializeField] private RarityVisualConfig rarityVisualConfig;
 
     [Header("Crafter Lines")]
@@ -24,6 +26,9 @@ public class DraggedItemVisual : MonoBehaviour, IBeginDragHandler, IDragHandler,
     private RectTransform rectTransform;
     private Canvas canvas;
     private CanvasGroup canvasGroup;
+    private Coroutine enchantmentDropHoverRoutine;
+    private Coroutine modifierCraftRoutine;
+    private Vector2 enchantmentDropHoverOrigin;
 
     private ItemInstance itemInstance;
     private ShopSlotUI originShopSlot;
@@ -61,11 +66,13 @@ public class DraggedItemVisual : MonoBehaviour, IBeginDragHandler, IDragHandler,
         Canvas hoverCanvas = canvas != null ? canvas : GetComponentInParent<Canvas>();
         canvas = hoverCanvas;
         ItemTooltipUI.Show(itemInstance, hoverCanvas);
+        ShowEnchantmentTargetHighlights();
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
         ItemTooltipUI.Hide();
+        ClearEnchantmentTargetHighlights();
     }
 
     private void Awake()
@@ -84,12 +91,14 @@ public class DraggedItemVisual : MonoBehaviour, IBeginDragHandler, IDragHandler,
         EnsurePlacementRuleIndicator();
         EnsureProtectionVisuals();
         EnsureBurnVisuals();
+        EnsureEnchantmentCapacityIndicator();
         EnsureRarityVisualConfig();
     }
 
     private void OnDestroy()
     {
         ItemTooltipUI.Hide();
+        ClearEnchantmentTargetHighlights();
         PrepareSlotUI.ClearDestroyedItem(this);
 
         if (currentAnvilSlot != null)
@@ -130,6 +139,7 @@ public class DraggedItemVisual : MonoBehaviour, IBeginDragHandler, IDragHandler,
         UpdatePlacementRuleVisual(itemInstance.placementRule);
         RefreshProtectionVisual();
         RefreshBurnVisual();
+        RefreshEnchantmentCapacityVisual();
     }
 
     private void ClearVisual()
@@ -153,6 +163,7 @@ public class DraggedItemVisual : MonoBehaviour, IBeginDragHandler, IDragHandler,
         DisablePlacementRuleVisual();
         SetProtectionVisualActive(false);
         SetBurnVisualActive(false);
+        SetEnchantmentCapacityVisualActive(false);
         ClearAnvilPlacementPreview();
     }
 
@@ -220,6 +231,65 @@ public class DraggedItemVisual : MonoBehaviour, IBeginDragHandler, IDragHandler,
     {
         if (canvasGroup != null)
             canvasGroup.blocksRaycasts = shouldBlock;
+    }
+
+    private void ShowEnchantmentTargetHighlights()
+    {
+        ClearEnchantmentTargetHighlights();
+        if (currentAnvilSlot == null || itemInstance == null || itemInstance.enchantments == null ||
+            itemInstance.enchantments.Count == 0)
+            return;
+
+        AnvilSlotUI[] slots = FindObjectsByType<AnvilSlotUI>(FindObjectsSortMode.None);
+        int rowCount = 0;
+        int columnCount = 0;
+        for (int i = 0; i < slots.Length; i++)
+        {
+            if (slots[i] == null)
+                continue;
+
+            rowCount = Mathf.Max(rowCount, slots[i].Row + 1);
+            columnCount = Mathf.Max(columnCount, slots[i].Column + 1);
+        }
+
+        for (int slotIndex = 0; slotIndex < slots.Length; slotIndex++)
+        {
+            AnvilSlotUI targetSlot = slots[slotIndex];
+            if (targetSlot == null)
+                continue;
+
+            List<Color> matchingColors = new();
+            for (int enchantmentIndex = 0; enchantmentIndex < itemInstance.enchantments.Count; enchantmentIndex++)
+            {
+                EnchantmentInstance enchantment = itemInstance.enchantments[enchantmentIndex];
+                if (enchantment == null || enchantment.data == null)
+                    continue;
+
+                bool isAffected = GridPlacementRuleUtility.IsSlotAffectedByRule(
+                    enchantment.targetRule,
+                    currentAnvilSlot.Row,
+                    currentAnvilSlot.Column,
+                    targetSlot.Row,
+                    targetSlot.Column,
+                    rowCount,
+                    columnCount);
+                if (isAffected)
+                    matchingColors.Add(EnchantmentVisualPalette.GetColor(enchantmentIndex));
+            }
+
+            if (matchingColors.Count > 0)
+                targetSlot.ShowEnchantmentHoverHighlight(matchingColors);
+        }
+    }
+
+    private static void ClearEnchantmentTargetHighlights()
+    {
+        AnvilSlotUI[] slots = FindObjectsByType<AnvilSlotUI>(FindObjectsSortMode.None);
+        for (int i = 0; i < slots.Length; i++)
+        {
+            if (slots[i] != null)
+                slots[i].ClearEnchantmentHoverHighlight();
+        }
     }
 
     public void OnBeginDrag(PointerEventData eventData)
@@ -377,13 +447,13 @@ public class DraggedItemVisual : MonoBehaviour, IBeginDragHandler, IDragHandler,
         ChestSlotUI chestSlot = GetChestSlotUnderPointer(eventData);
         if (chestSlot != null)
         {
-            if (!chestSlot.IsOccupied)
+            if (chestSlot.CanAcceptItem())
             {
                 PlaceInChestSlot(chestSlot);
                 return;
             }
 
-            if (TrySwapWithOccupiedChestSlot(chestSlot))
+            if (chestSlot.AcceptsItems && TrySwapWithOccupiedChestSlot(chestSlot))
                 return;
         }
 
@@ -480,7 +550,7 @@ public class DraggedItemVisual : MonoBehaviour, IBeginDragHandler, IDragHandler,
 
     public void SnapToChestSlot(ChestSlotUI slot)
     {
-        if (slot == null)
+        if (slot == null || !slot.AcceptsItems)
             return;
 
         transform.SetParent(slot.transform, false);
@@ -538,6 +608,7 @@ public class DraggedItemVisual : MonoBehaviour, IBeginDragHandler, IDragHandler,
         UpdatePlacementRuleVisual(itemInstance.placementRule);
         RefreshProtectionVisual();
         RefreshBurnVisual();
+        RefreshEnchantmentCapacityVisual();
     }
 
     private Transform GetDragLayer()
@@ -561,6 +632,37 @@ public class DraggedItemVisual : MonoBehaviour, IBeginDragHandler, IDragHandler,
     public void PlayImpactScaleAnimation()
     {
         EnsureImpactScaleAnimation().Play();
+    }
+
+    public void PlayDamageIncreaseAnimation(float amount)
+    {
+        PlayImpactScaleAnimation();
+        StartCoroutine(DamageIncreaseFeedback(amount));
+    }
+
+    private IEnumerator DamageIncreaseFeedback(float amount)
+    {
+        GameObject feedback = new GameObject("DamageIncrease", typeof(RectTransform), typeof(CanvasRenderer), typeof(TMPro.TextMeshProUGUI));
+        feedback.transform.SetParent(transform, false);
+        feedback.layer = gameObject.layer;
+        var label = feedback.GetComponent<TMPro.TextMeshProUGUI>();
+        label.text = $"+{amount:0.##} " + (GameTextLocalizer.CurrentLanguage == GameLanguage.Spanish ? "DAÑO" : "DAMAGE");
+        label.fontSize = 23f;
+        label.fontStyle = TMPro.FontStyles.Bold;
+        label.alignment = TMPro.TextAlignmentOptions.Center;
+        label.color = new Color(1f, 0.84f, 0.22f);
+        label.raycastTarget = false;
+        var rect = feedback.GetComponent<RectTransform>();
+        rect.anchorMin = rect.anchorMax = new Vector2(0.5f, 0.5f);
+        rect.sizeDelta = new Vector2(200f, 48f);
+        for (float elapsed = 0f; elapsed < 0.9f; elapsed += Time.unscaledDeltaTime)
+        {
+            float t = elapsed / 0.9f;
+            rect.anchoredPosition = new Vector2(0f, 15f + t * 55f);
+            label.alpha = 1f - Mathf.SmoothStep(0f, 1f, Mathf.InverseLerp(0.4f, 1f, t));
+            yield return null;
+        }
+        Destroy(feedback);
     }
 
     public IEnumerator PlayImpactScaleAnimationAndWait()
@@ -674,6 +776,9 @@ public class DraggedItemVisual : MonoBehaviour, IBeginDragHandler, IDragHandler,
 
     private bool TrySwapWithOccupiedChestSlot(ChestSlotUI targetSlot)
     {
+        if (targetSlot == null || !targetSlot.AcceptsItems)
+            return false;
+
         DraggedItemVisual displacedItem = targetSlot.CurrentItem;
         if (displacedItem == null || displacedItem == this)
             return false;
@@ -850,6 +955,355 @@ public class DraggedItemVisual : MonoBehaviour, IBeginDragHandler, IDragHandler,
     {
         if (burnOverlayImage != null)
             burnOverlayImage.gameObject.SetActive(isActive);
+    }
+
+    public bool TryAddEnchantment(EnchantmentInstance enchantment)
+    {
+        if (itemInstance == null || !itemInstance.TryAddEnchantment(enchantment))
+            return false;
+
+        RefreshEnchantmentCapacityVisual();
+        return true;
+    }
+
+    public bool ApplyModifier(ModifierInstance modifier)
+    {
+        if (itemInstance == null || modifier == null || modifier.data == null)
+            return false;
+
+        if (modifier.data.property == ModifierData.ModifierProperty.CrafterSide)
+        {
+            itemInstance.crafterSide = modifier.data.crafterSide;
+            UpdateCrafterLineVisual(itemInstance.crafterSide);
+        }
+        else
+        {
+            GridPlacementRule previousRule = itemInstance.placementRule;
+            itemInstance.placementRule = modifier.data.placementRule;
+            UpdatePlacementRuleVisual(itemInstance.placementRule);
+            if (!TryRevalidateAnvilPlacementAfterModifier())
+            {
+                itemInstance.placementRule = previousRule;
+                UpdatePlacementRuleVisual(previousRule);
+                return false;
+            }
+        }
+
+        QueueCraftAfterModifier();
+        return true;
+    }
+
+    private void QueueCraftAfterModifier()
+    {
+        if (currentAnvilSlot == null)
+            return;
+
+        if (modifierCraftRoutine != null)
+            StopCoroutine(modifierCraftRoutine);
+
+        modifierCraftRoutine = StartCoroutine(TryCraftAfterModifier());
+    }
+
+    private IEnumerator TryCraftAfterModifier()
+    {
+        // Deja que ModifierDragVisual termine de consumir el modificador antes
+        // de que el yunque pueda reemplazar o destruir los items combinados.
+        yield return null;
+        modifierCraftRoutine = null;
+
+        AnvilSlotUI slot = currentAnvilSlot;
+        if (slot != null && slot.CurrentItem == this)
+            AnvilCraftManager.GetOrCreate().TryCraftFromSlot(slot);
+    }
+
+    private bool TryRevalidateAnvilPlacementAfterModifier()
+    {
+        AnvilSlotUI previousSlot = currentAnvilSlot;
+        if (previousSlot == null || CanPlaceInAnvilSlot(previousSlot))
+            return true;
+
+        AnvilSlotUI compatibleFreeSlot = null;
+        AnvilSlotUI[] availableSlots = FindObjectsByType<AnvilSlotUI>(FindObjectsSortMode.None);
+        for (int i = 0; i < availableSlots.Length; i++)
+        {
+            AnvilSlotUI candidate = availableSlots[i];
+            if (candidate == null || candidate == previousSlot || candidate.IsOccupied || !CanPlaceInAnvilSlot(candidate))
+                continue;
+
+            if (compatibleFreeSlot == null || candidate.Row < compatibleFreeSlot.Row ||
+                (candidate.Row == compatibleFreeSlot.Row && candidate.Column < compatibleFreeSlot.Column))
+                compatibleFreeSlot = candidate;
+        }
+
+        if (compatibleFreeSlot != null)
+        {
+            previousSlot.SetPrepareLinkedHighlight(false);
+            previousSlot.ClearItem();
+            SnapToAnvilSlot(compatibleFreeSlot, false);
+            return true;
+        }
+
+        ChestStorageManager storage = FindFirstObjectByType<ChestStorageManager>();
+        if (storage != null && storage.TryStoreItem(this))
+        {
+            previousSlot.SetPrepareLinkedHighlight(false);
+            previousSlot.ClearItem();
+            return true;
+        }
+
+        return false;
+    }
+
+    public void PlayModifierAppliedAnimation()
+    {
+        StartCoroutine(ModifierAppliedAnimation());
+    }
+
+    private IEnumerator ModifierAppliedAnimation()
+    {
+        const int particleCount = 22;
+        const float duration = 0.7f;
+        RectTransform[] particles = new RectTransform[particleCount];
+        Vector2[] starts = new Vector2[particleCount];
+        Vector2[] ends = new Vector2[particleCount];
+
+        for (int i = 0; i < particleCount; i++)
+        {
+            GameObject particleObject = new GameObject(
+                "ModifierParticle",
+                typeof(RectTransform),
+                typeof(CanvasRenderer),
+                typeof(Image));
+            particleObject.layer = gameObject.layer;
+            particleObject.transform.SetParent(transform, false);
+            particleObject.transform.SetAsLastSibling();
+
+            RectTransform particleRect = particleObject.GetComponent<RectTransform>();
+            particleRect.anchorMin = particleRect.anchorMax = new Vector2(0.5f, 0.5f);
+            particleRect.pivot = new Vector2(0.5f, 0.5f);
+            particleRect.sizeDelta = Vector2.one * Random.Range(6f, 12f);
+            Vector2 direction = Random.insideUnitCircle.normalized;
+            starts[i] = direction * Random.Range(6f, 20f);
+            ends[i] = direction * Random.Range(50f, 92f);
+            particleRect.anchoredPosition = starts[i];
+            particles[i] = particleRect;
+
+            Image image = particleObject.GetComponent<Image>();
+            image.color = Color.Lerp(
+                new Color(0.12f, 0.85f, 0.34f, 1f),
+                new Color(0.7f, 1f, 0.35f, 1f),
+                Random.value);
+            image.raycastTarget = false;
+        }
+
+        Vector3 originalScale = transform.localScale;
+        float elapsed = 0f;
+        while (elapsed < duration)
+        {
+            elapsed += Time.unscaledDeltaTime;
+            float t = Mathf.Clamp01(elapsed / duration);
+            float eased = 1f - Mathf.Pow(1f - t, 3f);
+            transform.localScale = originalScale * (1f + Mathf.Sin(t * Mathf.PI) * 0.16f);
+
+            for (int i = 0; i < particles.Length; i++)
+            {
+                if (particles[i] == null) continue;
+                particles[i].anchoredPosition = Vector2.LerpUnclamped(starts[i], ends[i], eased);
+                particles[i].localRotation = Quaternion.Euler(0f, 0f, t * 300f + i * 19f);
+                particles[i].localScale = Vector3.one * Mathf.Lerp(1.4f, 0.05f, t);
+                Image image = particles[i].GetComponent<Image>();
+                Color color = image.color;
+                color.a = 1f - t;
+                image.color = color;
+            }
+            yield return null;
+        }
+
+        transform.localScale = originalScale;
+        for (int i = 0; i < particles.Length; i++)
+            if (particles[i] != null) Destroy(particles[i].gameObject);
+    }
+
+    public void RefreshEnchantmentCapacityVisual()
+    {
+        EnsureEnchantmentCapacityIndicator();
+        if (itemInstance == null || itemInstance.data == null)
+        {
+            SetEnchantmentCapacityVisualActive(false);
+            return;
+        }
+
+        enchantmentCapacityGlow.SetCapacity(itemInstance.EnchantmentCount, itemInstance.MaxEnchantments);
+    }
+
+    private void EnsureEnchantmentCapacityIndicator()
+    {
+        // Hide legacy indicators in existing prefabs as well as runtime instances.
+        if (enchantmentCapacityIndicatorImage != null)
+            enchantmentCapacityIndicatorImage.gameObject.SetActive(false);
+        Transform legacy = transform.Find("EnchantmentCapacityIndicator");
+        if (legacy != null)
+            legacy.gameObject.SetActive(false);
+
+        if (enchantmentCapacityGlow != null)
+            return;
+
+        Transform existing = transform.Find("EnchantmentCapacityGlow");
+        if (existing != null)
+            enchantmentCapacityGlow = existing.GetComponent<EnchantmentCapacityGlow>();
+        if (enchantmentCapacityGlow != null)
+            return;
+
+        GameObject glowObject = new GameObject("EnchantmentCapacityGlow",
+            typeof(RectTransform), typeof(CanvasRenderer), typeof(EnchantmentCapacityGlow));
+        glowObject.layer = gameObject.layer;
+        glowObject.transform.SetParent(transform, false);
+        // Draw above the background; the transparent center keeps the icon visible.
+        glowObject.transform.SetAsLastSibling();
+        RectTransform glowRect = glowObject.GetComponent<RectTransform>();
+        glowRect.anchorMin = Vector2.zero;
+        glowRect.anchorMax = Vector2.one;
+        glowRect.offsetMin = Vector2.one * 3f;
+        glowRect.offsetMax = Vector2.one * -3f;
+        enchantmentCapacityGlow = glowObject.GetComponent<EnchantmentCapacityGlow>();
+        glowObject.SetActive(false);
+    }
+
+    private void SetEnchantmentCapacityVisualActive(bool active)
+    {
+        if (enchantmentCapacityGlow != null)
+            enchantmentCapacityGlow.gameObject.SetActive(active);
+    }
+
+    public void PlayEnchantmentAppliedAnimation()
+    {
+        StartCoroutine(EnchantmentAppliedAnimation());
+    }
+
+    public void SetEnchantmentDropHover(bool active)
+    {
+        if (rectTransform == null)
+            rectTransform = GetComponent<RectTransform>();
+        if (rectTransform == null)
+            return;
+
+        if (enchantmentDropHoverRoutine != null)
+        {
+            StopCoroutine(enchantmentDropHoverRoutine);
+            enchantmentDropHoverRoutine = null;
+            rectTransform.anchoredPosition = enchantmentDropHoverOrigin;
+        }
+
+        if (!active)
+            return;
+
+        enchantmentDropHoverOrigin = rectTransform.anchoredPosition;
+        enchantmentDropHoverRoutine = StartCoroutine(EnchantmentDropHoverShake());
+    }
+
+    private IEnumerator EnchantmentDropHoverShake()
+    {
+        float elapsed = 0f;
+        while (true)
+        {
+            elapsed += Time.unscaledDeltaTime;
+            float x = Mathf.Sin(elapsed * 42f) * 4.5f;
+            float y = Mathf.Sin(elapsed * 57f + 0.8f) * 2.5f;
+            rectTransform.anchoredPosition = enchantmentDropHoverOrigin + new Vector2(x, y);
+            yield return null;
+        }
+    }
+
+    private IEnumerator EnchantmentAppliedAnimation()
+    {
+        const int particleCount = 18;
+        const float duration = 0.65f;
+        RectTransform[] particles = new RectTransform[particleCount];
+        Vector2[] starts = new Vector2[particleCount];
+        Vector2[] ends = new Vector2[particleCount];
+        Color[] colors = new Color[particleCount];
+
+        for (int i = 0; i < particleCount; i++)
+        {
+            GameObject particleObject = new GameObject(
+                "EnchantmentParticle",
+                typeof(RectTransform),
+                typeof(CanvasRenderer),
+                typeof(Image));
+            particleObject.layer = gameObject.layer;
+            particleObject.transform.SetParent(transform, false);
+            particleObject.transform.SetAsLastSibling();
+
+            RectTransform particleRect = particleObject.GetComponent<RectTransform>();
+            particleRect.anchorMin = particleRect.anchorMax = new Vector2(0.5f, 0.5f);
+            particleRect.pivot = new Vector2(0.5f, 0.5f);
+            particleRect.sizeDelta = Vector2.one * Random.Range(5f, 10f);
+
+            Vector2 direction = Random.insideUnitCircle.normalized;
+            starts[i] = direction * Random.Range(8f, 24f);
+            ends[i] = direction * Random.Range(42f, 76f);
+            particleRect.anchoredPosition = starts[i];
+            particles[i] = particleRect;
+
+            colors[i] = Color.Lerp(
+                new Color(0.42f, 0.2f, 1f, 1f),
+                new Color(0.2f, 1f, 0.48f, 1f),
+                Random.value);
+            Image particleImage = particleObject.GetComponent<Image>();
+            particleImage.color = colors[i];
+            particleImage.raycastTarget = false;
+        }
+
+        float elapsed = 0f;
+        while (elapsed < duration)
+        {
+            elapsed += Time.unscaledDeltaTime;
+            float t = Mathf.Clamp01(elapsed / duration);
+            float eased = 1f - Mathf.Pow(1f - t, 3f);
+
+            for (int i = 0; i < particles.Length; i++)
+            {
+                if (particles[i] == null)
+                    continue;
+
+                particles[i].anchoredPosition = Vector2.LerpUnclamped(starts[i], ends[i], eased);
+                particles[i].localRotation = Quaternion.Euler(0f, 0f, t * 240f + i * 17f);
+                particles[i].localScale = Vector3.one * Mathf.Lerp(1.35f, 0.05f, t);
+                Image particleImage = particles[i].GetComponent<Image>();
+                Color color = colors[i];
+                color.a = 1f - t;
+                particleImage.color = color;
+            }
+
+            yield return null;
+        }
+
+        for (int i = 0; i < particles.Length; i++)
+        {
+            if (particles[i] != null)
+                Destroy(particles[i].gameObject);
+        }
+
+        Vector3 normalScale = transform.localScale;
+        Vector3 expandedScale = normalScale * 1.16f;
+        elapsed = 0f;
+        while (elapsed < 0.14f)
+        {
+            elapsed += Time.unscaledDeltaTime;
+            float t = Mathf.SmoothStep(0f, 1f, Mathf.Clamp01(elapsed / 0.14f));
+            transform.localScale = Vector3.LerpUnclamped(normalScale, expandedScale, t);
+            yield return null;
+        }
+
+        elapsed = 0f;
+        while (elapsed < 0.2f)
+        {
+            elapsed += Time.unscaledDeltaTime;
+            float t = Mathf.SmoothStep(0f, 1f, Mathf.Clamp01(elapsed / 0.2f));
+            transform.localScale = Vector3.LerpUnclamped(expandedScale, normalScale, t);
+            yield return null;
+        }
+        transform.localScale = normalScale;
     }
 
     private Sprite LoadBurnSprite()

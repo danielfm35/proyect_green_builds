@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -30,6 +31,7 @@ public class AnvilSlotUI : MonoBehaviour
     private Image placementPreviewBorderRight;
     private Image placementPreviewBorderBottom;
     private Image placementPreviewBorderLeft;
+    private RectTransform enchantmentHoverHighlight;
 
     public int Row => row;
     public int Column => column;
@@ -97,6 +99,56 @@ public class AnvilSlotUI : MonoBehaviour
     {
         if (placementPreviewBorder != null)
             placementPreviewBorder.gameObject.SetActive(false);
+    }
+
+    public void ShowEnchantmentHoverHighlight(IReadOnlyList<Color> colors)
+    {
+        ClearEnchantmentHoverHighlight();
+        if (colors == null || colors.Count == 0)
+            return;
+
+        GameObject highlightObject = new GameObject("EnchantmentHoverHighlight", typeof(RectTransform));
+        highlightObject.transform.SetParent(transform, false);
+        highlightObject.transform.SetAsLastSibling();
+
+        enchantmentHoverHighlight = highlightObject.GetComponent<RectTransform>();
+        enchantmentHoverHighlight.anchorMin = Vector2.zero;
+        enchantmentHoverHighlight.anchorMax = Vector2.one;
+        enchantmentHoverHighlight.offsetMin = Vector2.zero;
+        enchantmentHoverHighlight.offsetMax = Vector2.zero;
+
+        for (int i = 0; i < colors.Count; i++)
+        {
+            GameObject squareObject = new GameObject(
+                "EnchantmentColor_" + (i + 1),
+                typeof(RectTransform),
+                typeof(CanvasRenderer),
+                typeof(Image));
+            squareObject.transform.SetParent(enchantmentHoverHighlight, false);
+
+            RectTransform squareRect = squareObject.GetComponent<RectTransform>();
+            float inset = colors.Count == 1 ? 0f : 0.18f * i;
+            squareRect.anchorMin = new Vector2(inset, inset);
+            squareRect.anchorMax = new Vector2(1f - inset, 1f - inset);
+            squareRect.offsetMin = new Vector2(3f, 3f);
+            squareRect.offsetMax = new Vector2(-3f, -3f);
+
+            Color color = colors[i];
+            Image squareImage = squareObject.GetComponent<Image>();
+            // Keep overlapping enchantment fills translucent so the item stays visible.
+            squareImage.color = new Color(color.r, color.g, color.b, 0.22f / colors.Count);
+            squareImage.raycastTarget = false;
+        }
+    }
+
+    public void ClearEnchantmentHoverHighlight()
+    {
+        if (enchantmentHoverHighlight == null)
+            return;
+
+        enchantmentHoverHighlight.gameObject.SetActive(false);
+        Destroy(enchantmentHoverHighlight.gameObject);
+        enchantmentHoverHighlight = null;
     }
 
     public void ShowEffectTargetHighlight(AnvilEffectKind effectKind)

@@ -163,8 +163,6 @@ public static class GameTextLocalizer
         {
             switch (statType)
             {
-                case StatType.Strength: return "fuerza";
-                case StatType.AttackSpeed: return "velocidad de ataque";
                 case StatType.Armor: return "armadura";
                 case StatType.HP: return "vida";
                 case StatType.CritChance: return "prob. critico";
@@ -172,50 +170,17 @@ public static class GameTextLocalizer
                 case StatType.CriticalDamage: return "dano critico";
                 case StatType.PiercingDamage: return "dano perforante";
                 case StatType.SlashingDamage: return "dano cortante";
-                case StatType.BluntDamage: return "dano contundente";
-                case StatType.Accuracy: return "precision";
+                case StatType.BludgeoningDamage: return "dano contundente";
                 case StatType.Dodge: return "evasion";
                 case StatType.Lifesteal: return "robo de vida";
-                case StatType.BlockChance: return "prob. bloqueo";
                 case StatType.ArmorPenetration: return "penetracion armadura";
-                case StatType.MeleeDamage: return "dano melee";
-                case StatType.RangeDamage: return "dano a distancia";
                 case StatType.CounterattackDamage: return "dano contraataque";
-                case StatType.BleedResistance: return "resist. sangrado";
-                case StatType.BurnResistance: return "resist. quemadura";
-                case StatType.FreezeResistance: return "resist. congelacion";
-                case StatType.ShockResistance: return "resist. shock";
-                case StatType.PoisonResistance: return "resist. veneno";
-                case StatType.BleedChance: return "prob. sangrado";
-                case StatType.BurnChance: return "prob. quemadura";
-                case StatType.FreezeChance: return "prob. congelacion";
-                case StatType.ShockChance: return "prob. shock";
-                case StatType.PoisonChance: return "prob. veneno";
-                case StatType.BleedDamage: return "dano sangrado";
-                case StatType.BurnDamage: return "dano quemadura";
-                case StatType.FreezeDamage: return "dano congelacion";
-                case StatType.ShockDamage: return "dano shock";
-                case StatType.PoisonDamage: return "dano veneno";
-                case StatType.BleedDuration: return "duracion sangrado";
-                case StatType.BurnDuration: return "duracion quemadura";
-                case StatType.FreezeDuration: return "duracion congelacion";
-                case StatType.ShockDuration: return "duracion shock";
-                case StatType.PoisonDuration: return "duracion veneno";
-                case StatType.BleedCooldown: return "enfriamiento sangrado";
-                case StatType.BurnCooldown: return "enfriamiento quemadura";
-                case StatType.FreezeCooldown: return "enfriamiento congelacion";
-                case StatType.ShockCooldown: return "enfriamiento shock";
-                case StatType.PoisonCooldown: return "enfriamiento veneno";
                 case StatType.StunChance: return "prob. aturdimiento";
-                case StatType.StunDuration: return "duracion aturdimiento";
-                case StatType.StunCooldown: return "enfriamiento aturdimiento";
             }
         }
 
         switch (statType)
         {
-            case StatType.Strength: return "strength";
-            case StatType.AttackSpeed: return "attack speed";
             case StatType.Armor: return "armor";
             case StatType.HP: return "hp";
             case StatType.CritChance: return "crit chance";
@@ -223,43 +188,12 @@ public static class GameTextLocalizer
             case StatType.CriticalDamage: return "critical damage";
             case StatType.PiercingDamage: return "piercing damage";
             case StatType.SlashingDamage: return "slashing damage";
-            case StatType.BluntDamage: return "blunt damage";
-            case StatType.Accuracy: return "accuracy";
+            case StatType.BludgeoningDamage: return "bludgeoning damage";
             case StatType.Dodge: return "dodge";
             case StatType.Lifesteal: return "lifesteal";
-            case StatType.BlockChance: return "block chance";
             case StatType.ArmorPenetration: return "armor penetration";
-            case StatType.MeleeDamage: return "melee damage";
-            case StatType.RangeDamage: return "range damage";
             case StatType.CounterattackDamage: return "counterattack damage";
-            case StatType.BleedResistance: return "bleed resistance";
-            case StatType.BurnResistance: return "burn resistance";
-            case StatType.FreezeResistance: return "freeze resistance";
-            case StatType.ShockResistance: return "shock resistance";
-            case StatType.PoisonResistance: return "poison resistance";
-            case StatType.BleedChance: return "bleed chance";
-            case StatType.BurnChance: return "burn chance";
-            case StatType.FreezeChance: return "freeze chance";
-            case StatType.ShockChance: return "shock chance";
-            case StatType.PoisonChance: return "poison chance";
-            case StatType.BleedDamage: return "bleed damage";
-            case StatType.BurnDamage: return "burn damage";
-            case StatType.FreezeDamage: return "freeze damage";
-            case StatType.ShockDamage: return "shock damage";
-            case StatType.PoisonDamage: return "poison damage";
-            case StatType.BleedDuration: return "bleed duration";
-            case StatType.BurnDuration: return "burn duration";
-            case StatType.FreezeDuration: return "freeze duration";
-            case StatType.ShockDuration: return "shock duration";
-            case StatType.PoisonDuration: return "poison duration";
-            case StatType.BleedCooldown: return "bleed cooldown";
-            case StatType.BurnCooldown: return "burn cooldown";
-            case StatType.FreezeCooldown: return "freeze cooldown";
-            case StatType.ShockCooldown: return "shock cooldown";
-            case StatType.PoisonCooldown: return "poison cooldown";
             case StatType.StunChance: return "stun chance";
-            case StatType.StunDuration: return "stun duration";
-            case StatType.StunCooldown: return "stun cooldown";
             default: return statType.ToString();
         }
     }

@@ -15,21 +15,27 @@ MonoBehaviour:
   id: Rusty_dagger
   itemName: Rusty Dagger
   description: 
-  icon: {fileID: 21300000, guid: 96632cef165eb7b4a876f19d60b6ed42, type: 3}
+  localizedName:
+    english: 
+    spanish: 
+  localizedDescription:
+    english: 
+    spanish: 
+  icon: {fileID: 21300000, guid: ca5a52f20beaace44bf3eee58a2b6909, type: 3}
   itemType: 0
+  itemGroups: 00000000
   weaponHandedness: 0
   armorCategory: 0
   rarity: 0
   cost: 1
   stats:
-  - statType: 1
-    valueType: 1
-    value: 2
-  - statType: 0
+  - statType: 6
     valueType: 0
-    value: 5
+    value: 10
+  level: 0
   isCraftedOnly: 0
-  upgradedVersion: {fileID: 11400000, guid: b8077b0af0175064d92f0752d967a374, type: 2}
+  upgradedVersion: {fileID: 11400000, guid: 6a25fe4f44fd583419592af6fd8e153e, type: 2}
   recipes:
   - otherItem: {fileID: 11400000, guid: a997ca1cb83db994897dc49f122dd78e, type: 2}
-    resultItem: {fileID: 11400000, guid: b8077b0af0175064d92f0752d967a374, type: 2}
+    resultItem: {fileID: 11400000, guid: 6a25fe4f44fd583419592af6fd8e153e, type: 2}
+  abilities: []

@@ -1,10 +1,49 @@
 fileFormatVersion: 2
-guid: 96632cef165eb7b4a876f19d60b6ed42
+guid: ca5a52f20beaace44bf3eee58a2b6909
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -2589446528093331400
-    second: daga_0
+      213: 7451901473007627077
+    second: dagaSimple_0
+  - first:
+      213: 410658376194542702
+    second: dagaSimple_1
+  - first:
+      213: -893398217738155001
+    second: dagaSimple_2
+  - first:
+      213: -4966674917719732075
+    second: dagaSimple_3
+  - first:
+      213: -6436576065544664198
+    second: dagaSimple_4
+  - first:
+      213: 7023676041581775530
+    second: dagaSimple_5
+  - first:
+      213: -4372546969517412352
+    second: dagaSimple_6
+  - first:
+      213: 7189420527770702336
+    second: dagaSimple_7
+  - first:
+      213: 8649277253865171059
+    second: dagaSimple_8
+  - first:
+      213: 7482455610849016911
+    second: dagaSimple_9
+  - first:
+      213: -2546548694528400149
+    second: dagaSimple_10
+  - first:
+      213: 6082568755405930511
+    second: dagaSimple_11
+  - first:
+      213: 1729560183772886474
+    second: dagaSimple_12
+  - first:
+      213: 8264321955167806718
+    second: dagaSimple_13
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -28,7 +67,7 @@ TextureImporter:
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
-  ignoreMipmapLimit: 1
+  ignoreMipmapLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -100,13 +139,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: daga_0
+      name: dagaSimple_0
       rect:
         serializedVersion: 2
-        x: 61
-        y: 57
-        width: 154
-        height: 145
+        x: 96
+        y: 1213
+        width: 7
+        height: 11
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +154,294 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 830e0282a10701cd0800000000000000
-      internalID: -2589446528093331400
+      spriteID: 54b64d768e87a6760800000000000000
+      internalID: 7451901473007627077
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dagaSimple_1
+      rect:
+        serializedVersion: 2
+        x: 100
+        y: 1205
+        width: 40
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e6c4d1d0e93f2b500800000000000000
+      internalID: 410658376194542702
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dagaSimple_2
+      rect:
+        serializedVersion: 2
+        x: 118
+        y: 47
+        width: 1109
+        height: 1187
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 70c00cced030a93f0800000000000000
+      internalID: -893398217738155001
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dagaSimple_3
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1078
+        width: 5
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 59019761a73d21bb0800000000000000
+      internalID: -4966674917719732075
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dagaSimple_4
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 1052
+        width: 20
+        height: 104
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a7bcd6bbb20bca6a0800000000000000
+      internalID: -6436576065544664198
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dagaSimple_5
+      rect:
+        serializedVersion: 2
+        x: 360
+        y: 1140
+        width: 7
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: aaa47e3952c197160800000000000000
+      internalID: 7023676041581775530
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dagaSimple_6
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 996
+        width: 13
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 000343ea2b79153c0800000000000000
+      internalID: -4372546969517412352
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dagaSimple_7
+      rect:
+        serializedVersion: 2
+        x: 143
+        y: 877
+        width: 37
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0029caaf0e3f5c360800000000000000
+      internalID: 7189420527770702336
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dagaSimple_8
+      rect:
+        serializedVersion: 2
+        x: 1165
+        y: 885
+        width: 66
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 378ef7826d7680870800000000000000
+      internalID: 8649277253865171059
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dagaSimple_9
+      rect:
+        serializedVersion: 2
+        x: 1091
+        y: 473
+        width: 9
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f4cb84cfbb507d760800000000000000
+      internalID: 7482455610849016911
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dagaSimple_10
+      rect:
+        serializedVersion: 2
+        x: 1133
+        y: 465
+        width: 30
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: be4666b5477d8acd0800000000000000
+      internalID: -2546548694528400149
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dagaSimple_11
+      rect:
+        serializedVersion: 2
+        x: 1093
+        y: 433
+        width: 9
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f004cd36e00a96450800000000000000
+      internalID: 6082568755405930511
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dagaSimple_12
+      rect:
+        serializedVersion: 2
+        x: 1147
+        y: 151
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ac53173d2d1a00810800000000000000
+      internalID: 1729560183772886474
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dagaSimple_13
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 69
+        width: 44
+        height: 38
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ef42d3f2805c0b270800000000000000
+      internalID: 8264321955167806718
       vertices: []
       indices: 
       edges: []
@@ -135,7 +460,20 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      daga_0: -2589446528093331400
+      dagaSimple_0: 7451901473007627077
+      dagaSimple_1: 410658376194542702
+      dagaSimple_10: -2546548694528400149
+      dagaSimple_11: 6082568755405930511
+      dagaSimple_12: 1729560183772886474
+      dagaSimple_13: 8264321955167806718
+      dagaSimple_2: -893398217738155001
+      dagaSimple_3: -4966674917719732075
+      dagaSimple_4: -6436576065544664198
+      dagaSimple_5: 7023676041581775530
+      dagaSimple_6: -4372546969517412352
+      dagaSimple_7: 7189420527770702336
+      dagaSimple_8: 8649277253865171059
+      dagaSimple_9: 7482455610849016911
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

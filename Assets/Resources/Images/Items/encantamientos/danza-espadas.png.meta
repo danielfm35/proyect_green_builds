@@ -1,0 +1,611 @@
+fileFormatVersion: 2
+guid: e57efc27fe9fc9745a56f774077cb467
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -2707269729065859404
+    second: danza-espadas_0
+  - first:
+      213: -8897817432221138925
+    second: danza-espadas_1
+  - first:
+      213: 5615095975778155182
+    second: danza-espadas_2
+  - first:
+      213: 2760808640484076077
+    second: danza-espadas_3
+  - first:
+      213: -7172755494103743307
+    second: danza-espadas_4
+  - first:
+      213: -2154485348979717821
+    second: danza-espadas_5
+  - first:
+      213: -6058798191746821802
+    second: danza-espadas_6
+  - first:
+      213: -8195096923008194428
+    second: danza-espadas_7
+  - first:
+      213: 4915193600160218623
+    second: danza-espadas_8
+  - first:
+      213: -4256976940605898878
+    second: danza-espadas_9
+  - first:
+      213: 859178613969930422
+    second: danza-espadas_10
+  - first:
+      213: -7323520538097710651
+    second: danza-espadas_11
+  - first:
+      213: -6080616980235667969
+    second: danza-espadas_12
+  - first:
+      213: 2894654301983580845
+    second: danza-espadas_13
+  - first:
+      213: 4705158567392900302
+    second: danza-espadas_14
+  - first:
+      213: 4213769388754401903
+    second: danza-espadas_15
+  - first:
+      213: 8364411464556497932
+    second: danza-espadas_16
+  - first:
+      213: -1056524182317270825
+    second: danza-espadas_17
+  - first:
+      213: 8590944401052055421
+    second: danza-espadas_18
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 2
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 1
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 512
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: danza-espadas_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 1239
+        height: 1236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4b68cdf6688dd6ad0800000000000000
+      internalID: -2707269729065859404
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: danza-espadas_1
+      rect:
+        serializedVersion: 2
+        x: 713
+        y: 1209
+        width: 12
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3104e24203a948480800000000000000
+      internalID: -8897817432221138925
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: danza-espadas_2
+      rect:
+        serializedVersion: 2
+        x: 729
+        y: 1203
+        width: 14
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: eaa7bf73a04dced40800000000000000
+      internalID: 5615095975778155182
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: danza-espadas_3
+      rect:
+        serializedVersion: 2
+        x: 740
+        y: 1207
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d2ae1e4c4dc505620800000000000000
+      internalID: 2760808640484076077
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: danza-espadas_4
+      rect:
+        serializedVersion: 2
+        x: 752
+        y: 1209
+        width: 19
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5b4073981e0457c90800000000000000
+      internalID: -7172755494103743307
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: danza-espadas_5
+      rect:
+        serializedVersion: 2
+        x: 770
+        y: 1212
+        width: 7
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 349c7447dfab912e0800000000000000
+      internalID: -2154485348979717821
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: danza-espadas_6
+      rect:
+        serializedVersion: 2
+        x: 691
+        y: 1197
+        width: 11
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 651d62f3523daeba0800000000000000
+      internalID: -6058798191746821802
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: danza-espadas_7
+      rect:
+        serializedVersion: 2
+        x: 315
+        y: 1143
+        width: 54
+        height: 47
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 488233c94ca254e80800000000000000
+      internalID: -8195096923008194428
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: danza-espadas_8
+      rect:
+        serializedVersion: 2
+        x: 715
+        y: 1181
+        width: 12
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ffdb2db9986463440800000000000000
+      internalID: 4915193600160218623
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: danza-espadas_9
+      rect:
+        serializedVersion: 2
+        x: 734
+        y: 1162
+        width: 27
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 28ff726e60e2ce4c0800000000000000
+      internalID: -4256976940605898878
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: danza-espadas_10
+      rect:
+        serializedVersion: 2
+        x: 816
+        y: 1156
+        width: 19
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6b84a44b56a6ceb00800000000000000
+      internalID: 859178613969930422
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: danza-espadas_11
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 837
+        width: 7
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5c9886d4fd0ad5a90800000000000000
+      internalID: -7323520538097710651
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: danza-espadas_12
+      rect:
+        serializedVersion: 2
+        x: 38
+        y: 837
+        width: 7
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ff538dda21f4d9ba0800000000000000
+      internalID: -6080616980235667969
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: danza-espadas_13
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 648
+        width: 5
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: da2a94940c0eb2820800000000000000
+      internalID: 2894654301983580845
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: danza-espadas_14
+      rect:
+        serializedVersion: 2
+        x: 95
+        y: 69
+        width: 15
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ec4f65db9c41c4140800000000000000
+      internalID: 4705158567392900302
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: danza-espadas_15
+      rect:
+        serializedVersion: 2
+        x: 502
+        y: 67
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f6afe1efee05a7a30800000000000000
+      internalID: 4213769388754401903
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: danza-espadas_16
+      rect:
+        serializedVersion: 2
+        x: 1055
+        y: 63
+        width: 13
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c0c481419eb541470800000000000000
+      internalID: 8364411464556497932
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: danza-espadas_17
+      rect:
+        serializedVersion: 2
+        x: 383
+        y: 41
+        width: 10
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7d87e589ad87651f0800000000000000
+      internalID: -1056524182317270825
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: danza-espadas_18
+      rect:
+        serializedVersion: 2
+        x: 892
+        y: 9
+        width: 7
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d77b6dd7a6a293770800000000000000
+      internalID: 8590944401052055421
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      danza-espadas_0: -2707269729065859404
+      danza-espadas_1: -8897817432221138925
+      danza-espadas_10: 859178613969930422
+      danza-espadas_11: -7323520538097710651
+      danza-espadas_12: -6080616980235667969
+      danza-espadas_13: 2894654301983580845
+      danza-espadas_14: 4705158567392900302
+      danza-espadas_15: 4213769388754401903
+      danza-espadas_16: 8364411464556497932
+      danza-espadas_17: -1056524182317270825
+      danza-espadas_18: 8590944401052055421
+      danza-espadas_2: 5615095975778155182
+      danza-espadas_3: 2760808640484076077
+      danza-espadas_4: -7172755494103743307
+      danza-espadas_5: -2154485348979717821
+      danza-espadas_6: -6058798191746821802
+      danza-espadas_7: -8195096923008194428
+      danza-espadas_8: 4915193600160218623
+      danza-espadas_9: -4256976940605898878
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

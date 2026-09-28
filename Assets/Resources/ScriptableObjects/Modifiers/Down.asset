@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63e23eb885f4f054682b6702193df186, type: 3}
+  m_Name: Down
+  m_EditorClassIdentifier: Assembly-CSharp::ModifierData
+  modifierName: Borde inferior
+  id: down
+  description: "Reemplaza la regla de ubicaci\xF3n en el yunque por Borde inferior."
+  icon: {fileID: 357006442158401228, guid: bd0489e61609b0e4d82312eb988b31fc, type: 3}
+  property: 0
+  placementRule: 4
+  crafterSide: 0

@@ -23,17 +23,17 @@ MonoBehaviour:
     spanish: 
   icon: {fileID: 21300000, guid: b4ae01d4d82b8d841a724f3e19ea333e, type: 3}
   itemType: 0
+  itemGroups: 01000000
   weaponHandedness: 0
   armorCategory: 0
   rarity: 0
   cost: 1
   stats:
-  - statType: 0
-    valueType: 0
-    value: 10
   - statType: 6
-    valueType: 1
-    value: 2
+    valueType: 0
+    value: 20
+  level: 0
   isCraftedOnly: 0
   upgradedVersion: {fileID: 0}
   recipes: []
+  abilities: []

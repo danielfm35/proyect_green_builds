@@ -28,9 +28,9 @@ MonoBehaviour:
   rarity: 0
   cost: 1
   stats:
-  - statType: 2
+  - statType: 0
     valueType: 0
-    value: 10
+    value: 20
   isCraftedOnly: 0
   upgradedVersion: {fileID: 0}
   recipes: []

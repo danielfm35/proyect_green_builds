@@ -1,0 +1,38 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a9087b69ad20ef459a23ceb11d3e667, type: 3}
+  m_Name: Whetstone
+  m_EditorClassIdentifier: Assembly-CSharp::ItemData
+  id: whetstone
+  itemName: Whetstone
+  description: 
+  localizedName:
+    english: 
+    spanish: 
+  localizedDescription:
+    english: 
+    spanish: 
+  icon: {fileID: 21300000, guid: 1cd0c520937349b42b7ae1500f876b20, type: 3}
+  itemType: 2
+  itemGroups: 
+  weaponHandedness: 0
+  armorCategory: 0
+  rarity: 0
+  cost: 1
+  stats: []
+  level: 0
+  isCraftedOnly: 0
+  upgradedVersion: {fileID: 11400000, guid: 6a25fe4f44fd583419592af6fd8e153e, type: 2}
+  recipes:
+  - otherItem: {fileID: 11400000, guid: c3a1c4ef7db13044bb2e9bbfe99be96d, type: 2}
+    resultItem: {fileID: 11400000, guid: 6a25fe4f44fd583419592af6fd8e153e, type: 2}
+  abilities: []

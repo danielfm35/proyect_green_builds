@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63e23eb885f4f054682b6702193df186, type: 3}
+  m_Name: LeftRight
+  m_EditorClassIdentifier: Assembly-CSharp::ModifierData
+  modifierName: Laterales
+  id: leftright
+  description: "Reemplaza la regla de ubicaci\xF3n en el yunque por Laterales."
+  icon: {fileID: -8738925543564498073, guid: c20615ef20970804baf787c9d318009c, type: 3}
+  property: 0
+  placementRule: 7
+  crafterSide: 0

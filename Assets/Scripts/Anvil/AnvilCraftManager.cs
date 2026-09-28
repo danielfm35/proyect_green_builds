@@ -9,6 +9,9 @@ public class AnvilCraftManager : MonoBehaviour
     [SerializeField] private List<AnvilSlotUI> slots = new();
     [SerializeField] private List<AnvilEffectData> blessings = new();
     [SerializeField] private List<AnvilEffectData> curses = new();
+    [SerializeField]
+    [Tooltip("Permite generar bendiciones y maldiciones aleatorias después de usar el yunque.")]
+    private bool enableRandomAnvilEffects;
     [SerializeField] private bool enableDebugLogs = false;
 
     private static AnvilCraftManager instance;
@@ -499,7 +502,7 @@ public class AnvilCraftManager : MonoBehaviour
 
         itemA.ReplaceItemData(outcome.resultData, outcome.resultRarity, preservedSide);
         IsResolvingCraftSequence = true;
-        StartCoroutine(ResolveCraftSequence(itemA, pendingEffects, outcome, slotA, slotB));
+        StartCoroutine(ResolveCraftSequence(itemA, pendingEffects, outcome, slotA, slotB, !overrideRarity.HasValue));
     }
 
     private IEnumerator ResolveCraftSequence(
@@ -507,7 +510,8 @@ public class AnvilCraftManager : MonoBehaviour
         List<PendingAnvilEffect> pendingEffects,
         AnvilCraftOutcome outcome,
         AnvilSlotUI resultSlot,
-        AnvilSlotUI consumedSlot
+        AnvilSlotUI consumedSlot,
+        bool isRecipe
     )
     {
         if (craftedItem != null)
@@ -516,6 +520,12 @@ public class AnvilCraftManager : MonoBehaviour
         }
 
         ClearBurnedItems();
+        if (isRecipe)
+        {
+            float enchantmentDuration = ApplyCraftEnchantments();
+            if (enchantmentDuration > 0f)
+                yield return new WaitForSecondsRealtime(enchantmentDuration);
+        }
         float affectedItemsAnimationDuration = ApplyPendingEffects(pendingEffects, outcome, resultSlot, consumedSlot);
 
         if (affectedItemsAnimationDuration > 0f)
@@ -529,6 +539,36 @@ public class AnvilCraftManager : MonoBehaviour
         }
 
         IsResolvingCraftSequence = false;
+    }
+
+    private float ApplyCraftEnchantments()
+    {
+        GetGridSize(out int rows, out int columns);
+        Dictionary<DraggedItemVisual, float> bonuses = new();
+        foreach (AnvilSlotUI source in slots)
+        {
+            var enchantments = source != null ? source.CurrentItem?.ItemInstance?.enchantments : null;
+            if (enchantments == null) continue;
+            foreach (EnchantmentInstance enchantment in enchantments)
+            {
+                if (enchantment?.data == null || enchantment.data.effectKind != EnchantmentData.EffectKind.DamageOnCraft)
+                    continue;
+                foreach (AnvilSlotUI target in slots)
+                {
+                    DraggedItemVisual item = target != null ? target.CurrentItem : null;
+                    if (item?.ItemInstance == null || !GridPlacementRuleUtility.IsSlotAffectedByRule(
+                        enchantment.targetRule, source.Row, source.Column, target.Row, target.Column, rows, columns))
+                        continue;
+                    float amount = enchantment.data.damageIncreaseAmount;
+                    if (!item.ItemInstance.IncreaseDamage(amount)) continue;
+                    bonuses.TryGetValue(item, out float previous);
+                    bonuses[item] = previous + amount;
+                }
+            }
+        }
+        foreach (var bonus in bonuses)
+            bonus.Key.PlayDamageIncreaseAnimation(bonus.Value);
+        return bonuses.Count > 0 ? 0.9f : 0f;
     }
 
     private void ClearBurnedItems()
@@ -760,6 +800,7 @@ public class AnvilCraftManager : MonoBehaviour
         duplicateInstance.rarity = sourceInstance.rarity;
         duplicateInstance.isProtected = sourceInstance.isProtected;
         duplicateInstance.isBurned = sourceInstance.isBurned;
+        duplicateInstance.permanentFlatDamageBonus = sourceInstance.permanentFlatDamageBonus;
 
         duplicateVisual.Initialize(duplicateInstance, null);
         duplicateVisual.SnapToAnvilSlot(duplicateSlot, false);
@@ -769,6 +810,12 @@ public class AnvilCraftManager : MonoBehaviour
 
     private AnvilEffectVisual SpawnRandomPendingEffect()
     {
+        if (!enableRandomAnvilEffects)
+        {
+            LogDebug("La generación aleatoria de bendiciones y maldiciones está desactivada.");
+            return null;
+        }
+
         AnvilSlotUI targetSlot = GetRandomFreeSlot();
         if (targetSlot == null)
         {

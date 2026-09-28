@@ -50,6 +50,36 @@ public class ChestStorageManager : MonoBehaviour
         return true;
     }
 
+    public bool TryStoreEnchantment(EnchantmentInstance enchantment)
+    {
+        if (enchantment == null || enchantment.data == null)
+            return false;
+
+        RefreshSlots();
+        for (int i = 0; i < slots.Count; i++)
+        {
+            if (slots[i] != null && slots[i].TrySetEnchantment(enchantment))
+                return true;
+        }
+
+        return false;
+    }
+
+    public bool TryStoreModifier(ModifierInstance modifier)
+    {
+        if (modifier == null || modifier.data == null)
+            return false;
+
+        RefreshSlots();
+        for (int i = 0; i < slots.Count; i++)
+        {
+            if (slots[i] != null && slots[i].TrySetModifier(modifier))
+                return true;
+        }
+
+        return false;
+    }
+
     private void PlaceItemInSlot(DraggedItemVisual item, ChestSlotUI slot)
     {
         RectTransform itemRect = item.GetComponent<RectTransform>();

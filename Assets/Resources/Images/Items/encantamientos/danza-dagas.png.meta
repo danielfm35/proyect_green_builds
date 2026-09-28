@@ -1,0 +1,1209 @@
+fileFormatVersion: 2
+guid: aa5ce3e3a398c834d947f4a96c3ae576
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 1645885483142287779
+    second: danza-dagas 1_0
+  - first:
+      213: -3622739773986728726
+    second: danza-dagas 1_1
+  - first:
+      213: 4648437621717300467
+    second: danza-dagas 1_2
+  - first:
+      213: 8385300289987407267
+    second: danza-dagas 1_3
+  - first:
+      213: -6093306945252657428
+    second: danza-dagas 1_4
+  - first:
+      213: 4587411969420647974
+    second: danza-dagas 1_5
+  - first:
+      213: -27948309218959431
+    second: danza-dagas 1_6
+  - first:
+      213: 1510115318704360519
+    second: danza-dagas 1_7
+  - first:
+      213: 1892009002471021257
+    second: danza-dagas 1_8
+  - first:
+      213: 725170294794995967
+    second: danza-dagas 1_9
+  - first:
+      213: -4406812956463161915
+    second: danza-dagas 1_10
+  - first:
+      213: -2744621480936203581
+    second: danza-dagas 1_11
+  - first:
+      213: -5003816565923050240
+    second: danza-dagas 1_12
+  - first:
+      213: -9192148385429410954
+    second: danza-dagas 1_13
+  - first:
+      213: 7500365305638035043
+    second: danza-dagas 1_14
+  - first:
+      213: -8109831698393614871
+    second: danza-dagas 1_15
+  - first:
+      213: -4973258493392428502
+    second: danza-dagas 1_16
+  - first:
+      213: -7297762984655193217
+    second: danza-dagas 1_17
+  - first:
+      213: -6419211456532585783
+    second: danza-dagas 1_18
+  - first:
+      213: 7185878968688951188
+    second: danza-dagas 1_19
+  - first:
+      213: 7422112295279675072
+    second: danza-dagas 1_20
+  - first:
+      213: 5881692298146173312
+    second: danza-dagas 1_21
+  - first:
+      213: 7190259647372609390
+    second: danza-dagas 1_22
+  - first:
+      213: -8164690947086080199
+    second: danza-dagas 1_23
+  - first:
+      213: 5675913443990000281
+    second: danza-dagas 1_24
+  - first:
+      213: -1212630669101877989
+    second: danza-dagas 1_25
+  - first:
+      213: 4785039370492798773
+    second: danza-dagas 1_26
+  - first:
+      213: 792160351570161179
+    second: danza-dagas 1_27
+  - first:
+      213: 3157601243216991863
+    second: danza-dagas 1_28
+  - first:
+      213: -5494049731286400727
+    second: danza-dagas 1_29
+  - first:
+      213: 6166744419894981929
+    second: danza-dagas 1_30
+  - first:
+      213: -990413657974047598
+    second: danza-dagas 1_31
+  - first:
+      213: 7038022758090387991
+    second: danza-dagas 1_32
+  - first:
+      213: 1983505568193959144
+    second: danza-dagas 1_33
+  - first:
+      213: -4756537480831092167
+    second: danza-dagas 1_34
+  - first:
+      213: -4136900789456216846
+    second: danza-dagas 1_35
+  - first:
+      213: 2934467707794603626
+    second: danza-dagas 1_36
+  - first:
+      213: 8871606406339958478
+    second: danza-dagas 1_37
+  - first:
+      213: 537544288886572274
+    second: danza-dagas 1_38
+  - first:
+      213: -5597456084987727994
+    second: danza-dagas 1_39
+  - first:
+      213: 4999750714497326399
+    second: danza-dagas 1_40
+  - first:
+      213: -7846104134124746654
+    second: danza-dagas 1_41
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 2
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 1
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 512
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: danza-dagas 1_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 1233
+        height: 1236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3a11bab602c57d610800000000000000
+      internalID: 1645885483142287779
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: danza-dagas 1_1
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 1213
+        width: 8
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ae497d1ae5179bdc0800000000000000
+      internalID: -3622739773986728726
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: danza-dagas 1_2
+      rect:
+        serializedVersion: 2
+        x: 127
+        y: 1223
+        width: 9
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3f475037361928040800000000000000
+      internalID: 4648437621717300467
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: danza-dagas 1_3
+      rect:
+        serializedVersion: 2
+        x: 480
+        y: 1205
+        width: 7
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3adedafbf229e5470800000000000000
+      internalID: 8385300289987407267
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: danza-dagas 1_4
+      rect:
+        serializedVersion: 2
+        x: 665
+        y: 1196
+        width: 13
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ce67bc4fd99307ba0800000000000000
+      internalID: -6093306945252657428
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: danza-dagas 1_5
+      rect:
+        serializedVersion: 2
+        x: 691
+        y: 1189
+        width: 15
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 62e51bb81e2c9af30800000000000000
+      internalID: 4587411969420647974
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: danza-dagas 1_6
+      rect:
+        serializedVersion: 2
+        x: 731
+        y: 1205
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9bf5eec2925bc9ff0800000000000000
+      internalID: -27948309218959431
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: danza-dagas 1_7
+      rect:
+        serializedVersion: 2
+        x: 378
+        y: 1164
+        width: 7
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 74ccf35a1e105f410800000000000000
+      internalID: 1510115318704360519
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: danza-dagas 1_8
+      rect:
+        serializedVersion: 2
+        x: 701
+        y: 1169
+        width: 62
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9ca5028d924c14a10800000000000000
+      internalID: 1892009002471021257
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: danza-dagas 1_9
+      rect:
+        serializedVersion: 2
+        x: 760
+        y: 1173
+        width: 11
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ff8cbee7a82501a00800000000000000
+      internalID: 725170294794995967
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: danza-dagas 1_10
+      rect:
+        serializedVersion: 2
+        x: 790
+        y: 1164
+        width: 13
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5cd9c62e6fad7d2c0800000000000000
+      internalID: -4406812956463161915
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: danza-dagas 1_11
+      rect:
+        serializedVersion: 2
+        x: 820
+        y: 1159
+        width: 15
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3ca14e10e4529e9d0800000000000000
+      internalID: -2744621480936203581
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: danza-dagas 1_12
+      rect:
+        serializedVersion: 2
+        x: 348
+        y: 1160
+        width: 9
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 00d01fa385fde8ab0800000000000000
+      internalID: -5003816565923050240
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: danza-dagas 1_13
+      rect:
+        serializedVersion: 2
+        x: 394
+        y: 1148
+        width: 15
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 67baccbdebdee6080800000000000000
+      internalID: -9192148385429410954
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: danza-dagas 1_14
+      rect:
+        serializedVersion: 2
+        x: 906
+        y: 1158
+        width: 9
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 36e1830c186a61860800000000000000
+      internalID: 7500365305638035043
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: danza-dagas 1_15
+      rect:
+        serializedVersion: 2
+        x: 1198
+        y: 1048
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9e5bb0db907147f80800000000000000
+      internalID: -8109831698393614871
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: danza-dagas 1_16
+      rect:
+        serializedVersion: 2
+        x: 40
+        y: 837
+        width: 9
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a22662defbf6bfab0800000000000000
+      internalID: -4973258493392428502
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: danza-dagas 1_17
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 646
+        width: 5
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f7bf1ac0b3329ba90800000000000000
+      internalID: -7297762984655193217
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: danza-dagas 1_18
+      rect:
+        serializedVersion: 2
+        x: 1197
+        y: 650
+        width: 8
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9c2e143d0316ae6a0800000000000000
+      internalID: -6419211456532585783
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: danza-dagas 1_19
+      rect:
+        serializedVersion: 2
+        x: 1213
+        y: 497
+        width: 8
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 49fb7af79de59b360800000000000000
+      internalID: 7185878968688951188
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: danza-dagas 1_20
+      rect:
+        serializedVersion: 2
+        x: 1188
+        y: 320
+        width: 15
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0c6443bfec3a00760800000000000000
+      internalID: 7422112295279675072
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: danza-dagas 1_21
+      rect:
+        serializedVersion: 2
+        x: 1163
+        y: 255
+        width: 45
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 081572d8bf7ff9150800000000000000
+      internalID: 5881692298146173312
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: danza-dagas 1_22
+      rect:
+        serializedVersion: 2
+        x: 1198
+        y: 298
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e67487cbd0fe8c360800000000000000
+      internalID: 7190259647372609390
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: danza-dagas 1_23
+      rect:
+        serializedVersion: 2
+        x: 62
+        y: 91
+        width: 15
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 937261e87d031be80800000000000000
+      internalID: -8164690947086080199
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: danza-dagas 1_24
+      rect:
+        serializedVersion: 2
+        x: 143
+        y: 103
+        width: 9
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 99253ec7435e4ce40800000000000000
+      internalID: 5675913443990000281
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: danza-dagas 1_25
+      rect:
+        serializedVersion: 2
+        x: 520
+        y: 95
+        width: 12
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b15307cc4dedb2fe0800000000000000
+      internalID: -1212630669101877989
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: danza-dagas 1_26
+      rect:
+        serializedVersion: 2
+        x: 545
+        y: 102
+        width: 9
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5376b7a84ffd76240800000000000000
+      internalID: 4785039370492798773
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: danza-dagas 1_27
+      rect:
+        serializedVersion: 2
+        x: 553
+        y: 100
+        width: 9
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b1eec7884a15efa00800000000000000
+      internalID: 792160351570161179
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: danza-dagas 1_28
+      rect:
+        serializedVersion: 2
+        x: 587
+        y: 104
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 776d74cd99d02db20800000000000000
+      internalID: 3157601243216991863
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: danza-dagas 1_29
+      rect:
+        serializedVersion: 2
+        x: 936
+        y: 95
+        width: 18
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 921085cc0e631c3b0800000000000000
+      internalID: -5494049731286400727
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: danza-dagas 1_30
+      rect:
+        serializedVersion: 2
+        x: 963
+        y: 111
+        width: 13
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9257678806da49550800000000000000
+      internalID: 6166744419894981929
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: danza-dagas 1_31
+      rect:
+        serializedVersion: 2
+        x: 1043
+        y: 102
+        width: 35
+        height: 43
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 29cf2c786085142f0800000000000000
+      internalID: -990413657974047598
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: danza-dagas 1_32
+      rect:
+        serializedVersion: 2
+        x: 40
+        y: 87
+        width: 7
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 712b711d8641ca160800000000000000
+      internalID: 7038022758090387991
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: danza-dagas 1_33
+      rect:
+        serializedVersion: 2
+        x: 62
+        y: 78
+        width: 13
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8e4d5322ec3d68b10800000000000000
+      internalID: 1983505568193959144
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: danza-dagas 1_34
+      rect:
+        serializedVersion: 2
+        x: 106
+        y: 91
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 93a3b36cc526dfdb0800000000000000
+      internalID: -4756537480831092167
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: danza-dagas 1_35
+      rect:
+        serializedVersion: 2
+        x: 118
+        y: 86
+        width: 8
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2fcdd6576a6c696c0800000000000000
+      internalID: -4136900789456216846
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: danza-dagas 1_36
+      rect:
+        serializedVersion: 2
+        x: 553
+        y: 87
+        width: 9
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a6eb3ff25d259b820800000000000000
+      internalID: 2934467707794603626
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: danza-dagas 1_37
+      rect:
+        serializedVersion: 2
+        x: 1021
+        y: 87
+        width: 7
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ec619f4d5074e1b70800000000000000
+      internalID: 8871606406339958478
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: danza-dagas 1_38
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 65
+        width: 13
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2f4cf16ceadb57700800000000000000
+      internalID: 537544288886572274
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: danza-dagas 1_39
+      rect:
+        serializedVersion: 2
+        x: 94
+        y: 66
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 68f2578e857d152b0800000000000000
+      internalID: -5597456084987727994
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: danza-dagas 1_40
+      rect:
+        serializedVersion: 2
+        x: 533
+        y: 79
+        width: 9
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f3d5e17f8cea26540800000000000000
+      internalID: 4999750714497326399
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: danza-dagas 1_41
+      rect:
+        serializedVersion: 2
+        x: 213
+        y: 35
+        width: 15
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 26845c64cd90d1390800000000000000
+      internalID: -7846104134124746654
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      danza-dagas 1_0: 1645885483142287779
+      danza-dagas 1_1: -3622739773986728726
+      danza-dagas 1_10: -4406812956463161915
+      danza-dagas 1_11: -2744621480936203581
+      danza-dagas 1_12: -5003816565923050240
+      danza-dagas 1_13: -9192148385429410954
+      danza-dagas 1_14: 7500365305638035043
+      danza-dagas 1_15: -8109831698393614871
+      danza-dagas 1_16: -4973258493392428502
+      danza-dagas 1_17: -7297762984655193217
+      danza-dagas 1_18: -6419211456532585783
+      danza-dagas 1_19: 7185878968688951188
+      danza-dagas 1_2: 4648437621717300467
+      danza-dagas 1_20: 7422112295279675072
+      danza-dagas 1_21: 5881692298146173312
+      danza-dagas 1_22: 7190259647372609390
+      danza-dagas 1_23: -8164690947086080199
+      danza-dagas 1_24: 5675913443990000281
+      danza-dagas 1_25: -1212630669101877989
+      danza-dagas 1_26: 4785039370492798773
+      danza-dagas 1_27: 792160351570161179
+      danza-dagas 1_28: 3157601243216991863
+      danza-dagas 1_29: -5494049731286400727
+      danza-dagas 1_3: 8385300289987407267
+      danza-dagas 1_30: 6166744419894981929
+      danza-dagas 1_31: -990413657974047598
+      danza-dagas 1_32: 7038022758090387991
+      danza-dagas 1_33: 1983505568193959144
+      danza-dagas 1_34: -4756537480831092167
+      danza-dagas 1_35: -4136900789456216846
+      danza-dagas 1_36: 2934467707794603626
+      danza-dagas 1_37: 8871606406339958478
+      danza-dagas 1_38: 537544288886572274
+      danza-dagas 1_39: -5597456084987727994
+      danza-dagas 1_4: -6093306945252657428
+      danza-dagas 1_40: 4999750714497326399
+      danza-dagas 1_41: -7846104134124746654
+      danza-dagas 1_5: 4587411969420647974
+      danza-dagas 1_6: -27948309218959431
+      danza-dagas 1_7: 1510115318704360519
+      danza-dagas 1_8: 1892009002471021257
+      danza-dagas 1_9: 725170294794995967
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

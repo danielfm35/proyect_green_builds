@@ -162,15 +162,21 @@ public class DraggableShopItem : MonoBehaviour, IBeginDragHandler, IDragHandler,
         ChestSlotUI chestSlot = GetChestSlotUnderPointer(eventData);
         if (chestSlot != null)
         {
-            if (!chestSlot.IsOccupied)
+            if (chestSlot.CanAcceptItem())
             {
                 LogDebug("Soltado sobre slot de cofre valido.");
                 PlaceInChestSlot(chestSlot);
                 return;
             }
 
-            LogDebug("Swap desde tienda sobre slot de cofre ocupado.");
-            SwapIntoOccupiedChestSlot(chestSlot, eventData);
+            if (chestSlot.AcceptsItems)
+            {
+                LogDebug("Swap desde tienda sobre slot de cofre ocupado.");
+                SwapIntoOccupiedChestSlot(chestSlot, eventData);
+                return;
+            }
+
+            CancelDrag();
             return;
         }
 
@@ -268,6 +274,12 @@ public class DraggableShopItem : MonoBehaviour, IBeginDragHandler, IDragHandler,
 
     private void PlaceInChestSlot(ChestSlotUI slot)
     {
+        if (slot == null || !slot.CanAcceptItem())
+        {
+            CancelDrag();
+            return;
+        }
+
         if (!TryPayForCurrentItem())
             return;
 
@@ -307,6 +319,12 @@ public class DraggableShopItem : MonoBehaviour, IBeginDragHandler, IDragHandler,
 
     private void SwapIntoOccupiedChestSlot(ChestSlotUI slot, PointerEventData eventData)
     {
+        if (slot == null || !slot.AcceptsItems)
+        {
+            CancelDrag();
+            return;
+        }
+
         if (!TryPayForCurrentItem())
             return;
 
@@ -420,12 +438,15 @@ public class DraggableShopItem : MonoBehaviour, IBeginDragHandler, IDragHandler,
         {
             LogDebug($"Carry detecto slot cofre, ocupado={chestSlot.IsOccupied}.");
 
-            if (!chestSlot.IsOccupied)
+            if (chestSlot.CanAcceptItem())
             {
                 activeDraggedVisual.SnapToChestSlot(chestSlot);
                 ClearActiveDraggedState();
                 return;
             }
+
+            if (!chestSlot.AcceptsItems)
+                return;
 
             DraggedItemVisual nextDisplaced = chestSlot.CurrentItem;
             if (nextDisplaced != null && nextDisplaced != activeDraggedVisual)
@@ -488,7 +509,7 @@ public class DraggableShopItem : MonoBehaviour, IBeginDragHandler, IDragHandler,
             return false;
         }
 
-        int cost = ShopManager.GetGoldCost(itemInstance.rarity);
+        int cost = shopManager.GetCurrentItemCost(itemInstance.rarity);
         if (shopManager.TrySpendGold(cost))
             return true;
 

@@ -28,10 +28,10 @@ MonoBehaviour:
   rarity: 0
   cost: 1
   stats:
-  - statType: 2
+  - statType: 1
     valueType: 0
     value: 5
-  - statType: 3
+  - statType: 0
     valueType: 0
     value: 5
   isCraftedOnly: 0
