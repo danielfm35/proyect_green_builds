@@ -381,7 +381,7 @@ public sealed class ModifiersOverlayController : MonoBehaviour
 public sealed class ModifierPackInteraction : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
 {
     private RectTransform rect;
-    private Image flash;
+    private ModifierForgeBurst burst;
     private TextMeshProUGUI hint;
     private System.Func<bool> tryOpen;
     private System.Action opened;
@@ -390,7 +390,16 @@ public sealed class ModifierPackInteraction : MonoBehaviour, IPointerEnterHandle
 
     public void Initialize(Image openingFlash, TextMeshProUGUI hintText, System.Func<bool> onTryOpen, System.Action onOpened)
     {
-        flash = openingFlash;
+        openingFlash.color = Color.clear;
+        var go = new GameObject("EmeraldRadialBurst", typeof(RectTransform), typeof(CanvasRenderer), typeof(ModifierForgeBurst));
+        go.layer = openingFlash.gameObject.layer;
+        go.transform.SetParent(openingFlash.transform, false);
+        var area = (RectTransform)go.transform;
+        area.anchorMin = Vector2.zero;
+        area.anchorMax = Vector2.one;
+        area.offsetMin = area.offsetMax = Vector2.zero;
+        burst = go.GetComponent<ModifierForgeBurst>();
+        burst.raycastTarget = false;
         hint = hintText;
         tryOpen = onTryOpen;
         opened = onOpened;
@@ -409,44 +418,75 @@ public sealed class ModifierPackInteraction : MonoBehaviour, IPointerEnterHandle
         StartCoroutine(Open());
     }
 
+    private void OnDisable()
+    {
+        StopAllCoroutines();
+        if (burst != null) burst.Clear();
+        opening = false;
+        targetScale = Vector3.one;
+        if (rect != null)
+        {
+            rect.anchoredPosition = Vector2.zero;
+            rect.localScale = Vector3.one;
+            rect.localRotation = Quaternion.identity;
+        }
+        Image icon = GetComponent<Image>();
+        if (icon != null) icon.color = Color.white;
+    }
+
     private IEnumerator Open()
     {
         opening = true;
         if (hint != null) hint.text = "Forjando modificadores...";
         Vector2 origin = rect.anchoredPosition;
-        float elapsed = 0f;
-        while (elapsed < 0.48f)
+        Image icon = GetComponent<Image>();
+        Color originalColor = icon.color;
+        try
         {
-            elapsed += Time.unscaledDeltaTime;
-            float t = Mathf.Clamp01(elapsed / 0.48f);
-            rect.anchoredPosition = origin + Random.insideUnitCircle * Mathf.Lerp(3f, 15f, t);
-            rect.localEulerAngles = new Vector3(0f, 0f, Mathf.Sin(t * 38f) * Mathf.Lerp(3f, 10f, t));
-            rect.localScale = Vector3.one * Mathf.Lerp(1.13f, 0.92f, t);
-            yield return null;
+            float elapsed = 0f;
+            while (elapsed < 0.48f)
+            {
+                elapsed += Time.unscaledDeltaTime;
+                float t = Mathf.Clamp01(elapsed / 0.48f);
+                rect.anchoredPosition = origin + Random.insideUnitCircle * Mathf.Lerp(3f, 15f, t);
+                rect.localEulerAngles = new Vector3(0f, 0f, Mathf.Sin(t * 38f) * Mathf.Lerp(3f, 10f, t));
+                rect.localScale = Vector3.one * Mathf.Lerp(1.13f, 0.92f, t);
+                yield return null;
+            }
+
+            // Keep the enchantment pack's squash and spring-back; replace only its flash.
+            elapsed = 0f;
+            while (elapsed < 0.18f)
+            {
+                elapsed += Time.unscaledDeltaTime;
+                float t = Mathf.Clamp01(elapsed / 0.18f);
+                rect.localScale = new Vector3(Mathf.Lerp(0.92f, 1.42f, t), Mathf.Lerp(0.92f, 0.08f, t), 1f);
+                if (burst != null) burst.Show(t * 0.12f);
+                yield return null;
+            }
+
+            elapsed = 0f;
+            while (elapsed < 0.42f)
+            {
+                elapsed += Time.unscaledDeltaTime;
+                float t = Mathf.Clamp01(elapsed / 0.42f);
+                float eased = 1f - Mathf.Pow(1f - t, 3f);
+                rect.localScale = Vector3.one * Mathf.Lerp(1.45f, 1.05f, eased);
+                rect.localEulerAngles = new Vector3(0f, Mathf.Lerp(18f, 0f, eased), 0f);
+                if (burst != null) burst.Show(Mathf.Lerp(0.12f, 1f, t));
+                yield return null;
+            }
         }
-        elapsed = 0f;
-        while (elapsed < 0.18f)
+        finally
         {
-            elapsed += Time.unscaledDeltaTime;
-            float t = Mathf.Clamp01(elapsed / 0.18f);
-            rect.localScale = new Vector3(Mathf.Lerp(0.92f, 1.42f, t), Mathf.Lerp(0.92f, 0.08f, t), 1f);
-            if (flash != null) flash.color = new Color(0.2f, 1f, 0.46f, t * 0.92f);
-            yield return null;
+            if (burst != null) burst.Clear();
+            rect.anchoredPosition = origin;
+            rect.localRotation = Quaternion.identity;
+            rect.localScale = Vector3.one;
+            icon.color = originalColor;
+            targetScale = Vector3.one;
+            opening = false;
         }
-        elapsed = 0f;
-        while (elapsed < 0.36f)
-        {
-            elapsed += Time.unscaledDeltaTime;
-            float t = Mathf.Clamp01(elapsed / 0.36f);
-            rect.localScale = Vector3.one * Mathf.Lerp(1.4f, 1f, 1f - Mathf.Pow(1f - t, 3f));
-            if (flash != null) flash.color = new Color(0.2f, 1f, 0.46f, Mathf.Lerp(0.92f, 0f, t));
-            yield return null;
-        }
-        rect.anchoredPosition = origin;
-        rect.localEulerAngles = Vector3.zero;
-        rect.localScale = Vector3.one;
-        targetScale = Vector3.one;
-        opening = false;
         opened?.Invoke();
     }
 }

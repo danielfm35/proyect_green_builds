@@ -21,12 +21,20 @@ public sealed class PlayerUI : MonoBehaviour
 
     private int currentHealth;
     private int battleHealthBonus;
+    private float armorRating;
+    private float magicResistRating;
     private Coroutine healthGainAnimation;
     private RectTransform animatedHealthBar;
     private Vector3 healthBarOriginalScale;
 
     public PlayerData Data => playerData;
+    public TMP_Text HealthStatText => healthMultiplierText;
+    public TMP_Text ShieldStatText => shieldMultiplierText;
+    public TMP_Text DamageStatText => damageMultiplierText;
+    public TMP_Text MagicResistStatText => magicResistMultiplierText;
     public int CurrentHealth => currentHealth;
+    public float ArmorRating => armorRating;
+    public float MagicResistRating => magicResistRating;
     public int MaximumHealth => (playerData == null ? 1 : playerData.MaximumHealth) + battleHealthBonus;
     public UnityEvent<int, int> HealthChanged { get; } = new();
 
@@ -119,14 +127,20 @@ public sealed class PlayerUI : MonoBehaviour
         HealthChanged.Invoke(currentHealth, MaximumHealth);
     }
 
-    public void TakeDamage(int amount)
+    public void SetCombatDefenses(float armor, float magicResist)
     {
-        SetHealth(currentHealth - Mathf.Max(0, amount));
+        armorRating = Mathf.Max(0f, armor);
+        magicResistRating = Mathf.Max(0f, magicResist);
     }
 
-    public IEnumerator PlayDamageEffect(int amount)
+    public void TakeDamage(int amount, DamageType type = DamageType.Physical)
     {
-        int damage = Mathf.Max(0, amount);
+        SetHealth(currentHealth - CombatDefense.ResolveDamage(amount, type, armorRating, magicResistRating));
+    }
+
+    public IEnumerator PlayDamageEffect(int amount, DamageType type = DamageType.Physical)
+    {
+        int damage = CombatDefense.ResolveDamage(amount, type, armorRating, magicResistRating);
         if (damage == 0)
             yield break;
 
@@ -135,7 +149,7 @@ public sealed class PlayerUI : MonoBehaviour
             : transform as RectTransform;
         if (hitTarget == null)
         {
-            TakeDamage(damage);
+            SetHealth(currentHealth - damage);
             yield break;
         }
 
@@ -174,7 +188,7 @@ public sealed class PlayerUI : MonoBehaviour
         damageText.outlineWidth = 0.25f;
         damageText.raycastTarget = false;
 
-        TakeDamage(damage);
+        SetHealth(currentHealth - damage);
 
         RectTransform panelRect = transform as RectTransform;
         Vector2 panelStartPosition = panelRect != null ? panelRect.anchoredPosition : Vector2.zero;
@@ -254,7 +268,7 @@ public sealed class PlayerUI : MonoBehaviour
         bool showTotals = false)
     {
         if (magicResistMultiplierText != null)
-            magicResistMultiplierText.text = FormatStatAndMultiplier(
+            magicResistMultiplierText.text = FormatDefenseAndMultiplier(
                 magicResistPoints, magicResistMultiplier, showTotals);
 
         if (healthMultiplierText != null)
@@ -265,7 +279,7 @@ public sealed class PlayerUI : MonoBehaviour
             );
 
         if (shieldMultiplierText != null)
-            shieldMultiplierText.text = FormatStatAndMultiplier(
+            shieldMultiplierText.text = FormatDefenseAndMultiplier(
                 shieldPoints,
                 shieldMultiplier,
                 showTotals
@@ -287,6 +301,9 @@ public sealed class PlayerUI : MonoBehaviour
 
     private void RefreshFromData(bool resetHealth)
     {
+        if (resetHealth)
+            SetCombatDefenses(0f, 0f);
+
         if (playerData == null)
         {
             if (nameText != null) nameText.text = "Player";
@@ -351,5 +368,17 @@ public sealed class PlayerUI : MonoBehaviour
 
         string operation = $"<color=#FFD34E>{points:0.##}</color> x <color=#72F2C0>{safeMultiplier:0.##}</color>";
         return operation;
+    }
+
+    private static string FormatDefenseAndMultiplier(float points, float multiplier, bool showTotal)
+    {
+        string value = FormatStatAndMultiplier(points, multiplier, showTotal);
+        if (!showTotal)
+            return value;
+
+        double percent = CombatDefense.Reduction(Mathf.Max(0f, points) * Mathf.Max(0f, multiplier)) * 100d;
+        // Truncate so the display cannot round a finite rating up to 100%.
+        percent = System.Math.Min(99.9d, System.Math.Floor(percent * 10d) / 10d);
+        return value + $" <size=65%>({percent:0.#}%)</size>";
     }
 }

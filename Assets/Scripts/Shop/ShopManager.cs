@@ -409,6 +409,8 @@ public class ShopManager : MonoBehaviour
         float shieldPoints = 0f;
         float damagePoints = 0f;
         float magicResistPoints = 0f;
+        if (playerUI != null)
+            playerUI.SetCombatDefenses(0f, 0f);
 
         AnvilSlotUI[] slots = FindObjectsByType<AnvilSlotUI>(FindObjectsSortMode.None)
             .OrderBy(slot => slot.Row)
@@ -438,30 +440,40 @@ public class ShopManager : MonoBehaviour
                     if (target == StatTarget.None)
                         continue;
 
-                    yield return AnimateStatPopup(itemVisual.transform as RectTransform, stat, target);
-
-                    switch (target)
+                    TMP_Text destination = playerUI == null ? null : target switch
                     {
-                        case StatTarget.Health:
-                            healthPoints += stat.value;
-                            break;
-                        case StatTarget.Shield:
-                            shieldPoints += stat.value;
-                            break;
-                        case StatTarget.Damage:
-                            damagePoints += stat.value;
-                            break;
-                        case StatTarget.MagicResist:
-                            magicResistPoints += stat.value;
-                            break;
-                    }
+                        StatTarget.Health => playerUI.HealthStatText,
+                        StatTarget.Shield => playerUI.ShieldStatText,
+                        StatTarget.MagicResist => playerUI.MagicResistStatText,
+                        _ => playerUI.DamageStatText
+                    };
+                    yield return StatTransferEffect.Play(
+                        itemVisual.transform as RectTransform, destination, stat.value,
+                        GetStatColor(target), delta =>
+                    {
+                        switch (target)
+                        {
+                            case StatTarget.Health:
+                                healthPoints += delta;
+                                break;
+                            case StatTarget.Shield:
+                                shieldPoints += delta;
+                                break;
+                            case StatTarget.Damage:
+                                damagePoints += delta;
+                                break;
+                            case StatTarget.MagicResist:
+                                magicResistPoints += delta;
+                                break;
+                        }
 
-                    if (playerUI != null)
-                        playerUI.SetDisplayedCombatValues(
-                            healthPoints, healthMultiplier,
-                            shieldPoints, shieldMultiplier,
-                            damagePoints, damageMultiplier,
-                            magicResistPoints, magicResistMultiplier);
+                        if (playerUI != null)
+                            playerUI.SetDisplayedCombatValues(
+                                healthPoints, healthMultiplier,
+                                shieldPoints, shieldMultiplier,
+                                damagePoints, damageMultiplier,
+                                magicResistPoints, magicResistMultiplier);
+                    });
                 }
             }
 
@@ -476,11 +488,14 @@ public class ShopManager : MonoBehaviour
 
                     damageMultiplier += pending.Value;
                     if (playerUI != null)
+                    {
                         playerUI.SetDisplayedCombatValues(
                             healthPoints, healthMultiplier,
                             shieldPoints, shieldMultiplier,
                             damagePoints, damageMultiplier,
                             magicResistPoints, magicResistMultiplier);
+                        yield return StatTransferEffect.PulseCounter(playerUI.DamageStatText);
+                    }
                 }
             }
 
@@ -510,6 +525,9 @@ public class ShopManager : MonoBehaviour
 
         if (playerUI != null)
         {
+            playerUI.SetCombatDefenses(
+                shieldPoints * shieldMultiplier,
+                magicResistPoints * magicResistMultiplier);
             playerUI.SetDisplayedCombatValues(
                 healthPoints, healthMultiplier,
                 shieldPoints, shieldMultiplier,
@@ -527,16 +545,19 @@ public class ShopManager : MonoBehaviour
         if (bossUI != null && bossUI.CurrentHealth > 0 && playerUI != null && bossUI.Data != null)
         {
             yield return new WaitForSecondsRealtime(0.35f);
-            yield return playerUI.PlayDamageEffect(bossUI.Data.AttackDamage);
+            yield return playerUI.PlayDamageEffect(bossUI.Data.AttackDamage, bossUI.Data.AttackDamageType);
             yield return ResolveAbilitiesAfterEnemyAttack(bossUI);
         }
 
         if (playerUI != null)
+        {
+            playerUI.SetCombatDefenses(0f, 0f);
             playerUI.SetDisplayedCombatValues(
                 0f, playerData != null ? playerData.HealthMultiplier : 1f,
                 0f, playerData != null ? playerData.ShieldMultiplier : 1f,
                 0f, playerData != null ? playerData.DamageMultiplier : 1f,
                 0f, playerData != null ? playerData.MagicResistMultiplier : 1f);
+        }
 
         UpdateGoldUI();
 
@@ -607,112 +628,6 @@ public class ShopManager : MonoBehaviour
         return result;
     }
 
-    private IEnumerator AnimateStatPopup(RectTransform source, ItemStat stat, StatTarget target)
-    {
-        Canvas canvas = FindFirstObjectByType<Canvas>();
-        if (canvas == null || source == null)
-            yield break;
-
-        GameObject popupObject = new GameObject(
-            $"StatPopup_{stat.statType}",
-            typeof(RectTransform),
-            typeof(CanvasGroup)
-        );
-        popupObject.transform.SetParent(canvas.transform, false);
-        popupObject.transform.SetAsLastSibling();
-
-        RectTransform popupRect = popupObject.GetComponent<RectTransform>();
-        popupRect.sizeDelta = new Vector2(120f, 64f);
-        popupRect.pivot = new Vector2(0.5f, 0.5f);
-        popupRect.position = source.TransformPoint(
-            new Vector3(52f, source.rect.height * 0.5f + 42f, 0f)
-        );
-        popupRect.localScale = Vector3.zero;
-
-        GameObject backgroundObject = new GameObject(
-            "Background",
-            typeof(RectTransform),
-            typeof(CanvasRenderer),
-            typeof(Image),
-            typeof(Shadow),
-            typeof(Outline)
-        );
-        backgroundObject.transform.SetParent(popupObject.transform, false);
-
-        RectTransform backgroundRect = backgroundObject.GetComponent<RectTransform>();
-        backgroundRect.anchorMin = Vector2.zero;
-        backgroundRect.anchorMax = Vector2.one;
-        backgroundRect.offsetMin = Vector2.zero;
-        backgroundRect.offsetMax = Vector2.zero;
-
-        Image popupImage = backgroundObject.GetComponent<Image>();
-        popupImage.color = GetStatColor(target);
-        popupImage.raycastTarget = false;
-
-        Shadow popupShadow = backgroundObject.GetComponent<Shadow>();
-        popupShadow.effectColor = new Color(0f, 0f, 0f, 0.75f);
-        popupShadow.effectDistance = new Vector2(7f, -7f);
-
-        Outline popupOutline = backgroundObject.GetComponent<Outline>();
-        popupOutline.effectColor = new Color(1f, 1f, 1f, 0.9f);
-        popupOutline.effectDistance = new Vector2(2f, -2f);
-
-        GameObject textObject = new GameObject("Value", typeof(RectTransform), typeof(CanvasRenderer), typeof(TextMeshProUGUI));
-        textObject.transform.SetParent(popupObject.transform, false);
-        RectTransform textRect = textObject.GetComponent<RectTransform>();
-        textRect.anchorMin = Vector2.zero;
-        textRect.anchorMax = Vector2.one;
-        textRect.offsetMin = Vector2.zero;
-        textRect.offsetMax = Vector2.zero;
-
-        TextMeshProUGUI popupText = textObject.GetComponent<TextMeshProUGUI>();
-        popupText.text = $"+{stat.value:0.##}";
-        popupText.fontSize = 42f;
-        popupText.fontStyle = FontStyles.Bold;
-        popupText.alignment = TextAlignmentOptions.Center;
-        popupText.color = Color.white;
-        popupText.raycastTarget = false;
-        popupText.outlineColor = new Color32(20, 20, 20, 255);
-        popupText.outlineWidth = 0.22f;
-
-        CanvasGroup canvasGroup = popupObject.GetComponent<CanvasGroup>();
-        const float duration = 0.9f;
-        float elapsed = 0f;
-        Vector3 startPosition = popupRect.position;
-        Vector3 sourceOriginalScale = source.localScale;
-
-        while (elapsed < duration)
-        {
-            if (popupRect == null)
-                yield break;
-
-            elapsed += Time.unscaledDeltaTime;
-            float t = Mathf.Clamp01(elapsed / duration);
-            float popupScale;
-            if (t < 0.2f)
-                popupScale = Mathf.Lerp(0f, 1.35f, t / 0.2f);
-            else if (t < 0.35f)
-                popupScale = Mathf.Lerp(1.35f, 1f, (t - 0.2f) / 0.15f);
-            else
-                popupScale = 1f;
-
-            float cardBounce = t < 0.18f
-                ? Mathf.Lerp(1f, 1.14f, t / 0.18f)
-                : Mathf.Lerp(1.14f, 1f, Mathf.Clamp01((t - 0.18f) / 0.25f));
-
-            popupRect.localScale = Vector3.one * popupScale;
-            popupRect.position = startPosition + canvas.transform.TransformVector(Vector3.up * (34f * t));
-            if (source != null)
-                source.localScale = sourceOriginalScale * cardBounce;
-            canvasGroup.alpha = t < 0.72f ? 1f : 1f - ((t - 0.72f) / 0.28f);
-            yield return null;
-        }
-
-        if (source != null)
-            source.localScale = sourceOriginalScale;
-        if (popupObject != null)
-            Destroy(popupObject);
-    }
 
     private IEnumerator AnimateMultiplierPopup(RectTransform source, float value, EnchantmentData enchantment)
     {
@@ -815,21 +730,25 @@ public class ShopManager : MonoBehaviour
             true);
         pendingAbility.Visual = visual;
         visual.anchoredPosition = abilityCombatLayer.InverseTransformPoint(source.position);
-        visual.localScale = Vector3.zero;
+        visual.localScale = Vector3.one * 0.28f;
+        CanvasGroup entranceGroup = visual.gameObject.AddComponent<CanvasGroup>();
+        entranceGroup.blocksRaycasts = false;
+        entranceGroup.alpha = 0f;
 
-        Vector2 target = Vector2.zero;
+        Vector2 target = new Vector2(-85f, 0f);
         Vector2 start = visual.anchoredPosition;
         float elapsed = 0f;
-        const float duration = 0.55f;
+        const float duration = 0.65f;
         while (elapsed < duration)
         {
             elapsed += Time.unscaledDeltaTime;
             float t = Mathf.Clamp01(elapsed / duration);
-            float eased = 1f - Mathf.Pow(1f - t, 3f);
-            Vector2 arc = Vector2.up * Mathf.Sin(t * Mathf.PI) * 95f;
+            float eased = AbilityEase(t);
+            Vector2 arc = Vector2.up * Mathf.Pow(Mathf.Sin(eased * Mathf.PI), 2f) * 55f;
             visual.anchoredPosition = Vector2.LerpUnclamped(start, target, eased) + arc;
-            visual.localScale = Vector3.one * Mathf.Lerp(0.2f, 1f, eased);
-            visual.localEulerAngles = new Vector3(0f, 0f, Mathf.Lerp(-90f, 0f, eased));
+            visual.localScale = Vector3.one * Mathf.Lerp(0.28f, 1f, eased);
+            visual.localEulerAngles = new Vector3(0f, 0f, Mathf.Lerp(-12f, 0f, eased));
+            entranceGroup.alpha = Mathf.SmoothStep(0f, 1f, Mathf.Clamp01(t / 0.35f));
             yield return null;
         }
 
@@ -845,7 +764,7 @@ public class ShopManager : MonoBehaviour
 
         EnsureAbilityCombatLayer();
         RectTransform visual = pendingAbility.Visual;
-        Vector2 dicePosition = Vector2.zero;
+        Vector2 dicePosition = new Vector2(145f, 0f);
         yield return new WaitForSecondsRealtime(0.3f);
 
         int roll = Random.Range(1, 21);
@@ -863,7 +782,6 @@ public class ShopManager : MonoBehaviour
             Transform abilityName = visual.Find("Name");
             if (abilityName != null)
                 abilityName.gameObject.SetActive(false);
-            visual.sizeDelta = new Vector2(36f, 36f);
             yield return MoveAbilityVisual(
                 visual,
                 visual.anchoredPosition,
@@ -888,7 +806,6 @@ public class ShopManager : MonoBehaviour
         Transform stagedName = visual.Find("Name");
         if (stagedName != null)
             stagedName.gameObject.SetActive(false);
-        visual.sizeDelta = new Vector2(36f, 36f);
         Vector2 activePosition = GetActiveAbilityPosition(activeAbilityEffects.Count - 1);
         yield return MoveAbilityVisual(visual, visual.anchoredPosition, activePosition, 0.58f);
         visual.name = "ActiveAbility_" + pendingAbility.Data.id;
@@ -1077,31 +994,46 @@ public class ShopManager : MonoBehaviour
         numberText.outlineWidth = 0.28f;
         numberText.raycastTarget = false;
 
+        CanvasGroup diceGroup = diceObject.GetComponent<CanvasGroup>();
+        diceGroup.blocksRaycasts = false;
+        diceGroup.alpha = 0f;
+        Color neutral = new Color(0.82f, 0.9f, 1f, 1f);
+        diceImage.color = neutral;
         float elapsed = 0f;
         float nextNumberChange = 0f;
-        const float duration = 1.05f;
+        int faceIndex = 0;
+        const float duration = 1.15f;
         while (elapsed < duration)
         {
             elapsed += Time.unscaledDeltaTime;
+            float t = Mathf.Clamp01(elapsed / duration);
+            float eased = 1f - Mathf.Pow(1f - t, 3f);
             if (elapsed >= nextNumberChange)
             {
-                nextNumberChange = elapsed + 0.07f;
-                numberText.text = Random.Range(1, 21).ToString();
+                nextNumberChange = elapsed + Mathf.Lerp(0.045f, 0.22f, t * t);
+                // Cosmetic faces must not consume the gameplay random sequence.
+                numberText.text = (1 + (faceIndex++ * 7 + finalRoll) % 20).ToString();
             }
-            float t = Mathf.Clamp01(elapsed / duration);
-            diceRect.localEulerAngles = new Vector3(0f, 0f, t * 720f);
-            diceRect.localScale = Vector3.one * (1f + Mathf.Sin(t * Mathf.PI * 10f) * 0.12f);
+            float angle = 720f * eased;
+            diceRect.localRotation = Quaternion.Euler(0f, 0f, angle);
+            numberRect.localRotation = Quaternion.Euler(0f, 0f, -angle);
+            float enter = AbilityEase(Mathf.Clamp01(t / 0.22f));
+            float wobble = Mathf.Sin(t * Mathf.PI * 6f) * Mathf.Pow(1f - t, 2f);
+            diceRect.localScale = Vector3.one * (Mathf.Lerp(0.65f, 1f, enter) + wobble * 0.045f);
+            diceRect.anchoredPosition = position + new Vector2(wobble * 5f, 20f * (1f - enter));
+            diceGroup.alpha = enter;
             yield return null;
         }
 
         numberText.text = finalRoll.ToString();
-        diceRect.localEulerAngles = Vector3.zero;
-        diceRect.localScale = Vector3.one * 1.22f;
+        diceRect.localRotation = Quaternion.identity;
+        numberRect.localRotation = Quaternion.identity;
+        diceRect.localScale = Vector3.one;
+        diceRect.anchoredPosition = position;
         bool success = ability.IsActivatedBy(finalRoll);
-        diceImage.color = success
+        Color resultColor = success
             ? new Color(0.28f, 1f, 0.42f, 1f)
             : new Color(1f, 0.2f, 0.18f, 1f);
-        numberText.color = success ? Color.white : new Color(1f, 0.8f, 0.8f, 1f);
 
         GameObject requirementObject = new GameObject(
             "Requirement",
@@ -1123,27 +1055,55 @@ public class ShopManager : MonoBehaviour
         requirement.outlineWidth = 0.2f;
         requirement.raycastTarget = false;
 
-        yield return new WaitForSecondsRealtime(0.7f);
+        elapsed = 0f;
+        const float revealDuration = 0.65f;
+        while (elapsed < revealDuration)
+        {
+            elapsed += Time.unscaledDeltaTime;
+            float t = Mathf.Clamp01(elapsed / revealDuration);
+            float pulse = Mathf.Sin(Mathf.PI * Mathf.Clamp01(t / 0.65f));
+            diceRect.localScale = Vector3.one * (1f + pulse * pulse * 0.16f);
+            diceImage.color = Color.Lerp(neutral, resultColor, AbilityEase(Mathf.Clamp01(t / 0.3f)));
+            requirement.alpha = Mathf.SmoothStep(0f, 1f, Mathf.Clamp01(t / 0.25f));
+            yield return null;
+        }
+
+        elapsed = 0f;
+        while (elapsed < 0.22f)
+        {
+            elapsed += Time.unscaledDeltaTime;
+            float t = AbilityEase(Mathf.Clamp01(elapsed / 0.22f));
+            diceGroup.alpha = 1f - t;
+            diceRect.localScale = Vector3.one * Mathf.Lerp(1f, 0.88f, t);
+            diceRect.anchoredPosition = position + Vector2.down * (14f * t);
+            yield return null;
+        }
         Destroy(diceObject);
+    }
+
+    private static float AbilityEase(float t)
+    {
+        return t * t * t * (t * (6f * t - 15f) + 10f);
     }
 
     private IEnumerator MoveAbilityVisual(RectTransform visual, Vector2 start, Vector2 end, float duration)
     {
-        if (visual == null)
-            yield break;
-
+        if (visual == null) yield break;
+        Vector2 startSize = visual.sizeDelta;
         float elapsed = 0f;
-        while (elapsed < duration)
+        while (elapsed < duration && visual != null)
         {
             elapsed += Time.unscaledDeltaTime;
-            float t = Mathf.Clamp01(elapsed / duration);
-            float eased = Mathf.SmoothStep(0f, 1f, t);
-            visual.anchoredPosition = Vector2.LerpUnclamped(start, end, eased)
-                + Vector2.up * Mathf.Sin(t * Mathf.PI) * 70f;
-            visual.localScale = Vector3.one * (1f + Mathf.Sin(t * Mathf.PI) * 0.18f);
+            float t = AbilityEase(Mathf.Clamp01(elapsed / duration));
+            visual.anchoredPosition = Vector2.LerpUnclamped(start, end, t)
+                + Vector2.up * Mathf.Pow(Mathf.Sin(t * Mathf.PI), 2f) * 45f;
+            visual.sizeDelta = Vector2.Lerp(startSize, new Vector2(36f, 36f), t);
+            visual.localScale = Vector3.one;
             yield return null;
         }
+        if (visual == null) yield break;
         visual.anchoredPosition = end;
+        visual.sizeDelta = new Vector2(36f, 36f);
         visual.localScale = Vector3.one;
     }
 
@@ -1159,9 +1119,10 @@ public class ShopManager : MonoBehaviour
         {
             elapsed += Time.unscaledDeltaTime;
             float t = Mathf.Clamp01(elapsed / duration);
-            visual.localScale = Vector3.one * (1f + Mathf.Sin(t * Mathf.PI) * 0.3f);
+            float pulse = Mathf.Pow(Mathf.Sin(t * Mathf.PI), 2f);
+            visual.localScale = Vector3.one * (1f + pulse * 0.2f);
             if (image != null)
-                image.color = Color.Lerp(color, originalColor, t);
+                image.color = Color.Lerp(originalColor, color, pulse);
             yield return null;
         }
         visual.localScale = Vector3.one;
@@ -1183,9 +1144,11 @@ public class ShopManager : MonoBehaviour
         {
             elapsed += Time.unscaledDeltaTime;
             float t = Mathf.Clamp01(elapsed / duration);
-            visual.anchoredPosition = origin + Vector2.right * Mathf.Sin(t * Mathf.PI * 10f) * 12f;
-            visual.localScale = Vector3.one * (1f - t * 0.65f);
-            group.alpha = 1f - t;
+            float fade = AbilityEase(t);
+            visual.anchoredPosition = origin + Vector2.right * Mathf.Sin(t * Mathf.PI * 4f) * 7f * (1f - t) * (1f - t)
+                + Vector2.down * (18f * fade);
+            visual.localScale = Vector3.one * (1f - fade * 0.15f);
+            group.alpha = 1f - fade;
             yield return null;
         }
         Destroy(visual.gameObject);
@@ -1202,8 +1165,9 @@ public class ShopManager : MonoBehaviour
         {
             elapsed += Time.unscaledDeltaTime;
             float t = Mathf.Clamp01(elapsed / duration);
-            group.alpha = 1f - t;
-            visual.localScale = Vector3.one * (1f + t * 0.5f);
+            float eased = AbilityEase(t);
+            group.alpha = 1f - eased;
+            visual.localScale = Vector3.one * (1f + eased * 0.1f);
             yield return null;
         }
         Destroy(visual.gameObject);

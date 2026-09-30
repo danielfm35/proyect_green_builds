@@ -17,6 +17,8 @@ public sealed class BossData : ScriptableObject
     [SerializeField] private bool isFinalBoss;
     [Min(1), SerializeField] private int maximumHealth = 100;
     [Min(0), SerializeField] private int attackDamage = 40;
+    [Tooltip("La armadura reduce todo el daño. La resistencia magica reduce adicionalmente el daño Magic.")]
+    [SerializeField] private DamageType attackDamageType = DamageType.Physical;
 
     [Header("Future combat configuration")]
     [Tooltip("Ability assets available to this boss.")]
@@ -33,6 +35,7 @@ public sealed class BossData : ScriptableObject
     public bool CropPortraitToFrame => cropPortraitToFrame;
     public int MaximumHealth => Mathf.Max(1, maximumHealth);
     public int AttackDamage => Mathf.Max(0, attackDamage);
+    public DamageType AttackDamageType => attackDamageType;
     public IReadOnlyList<ScriptableObject> Abilities => abilities;
     public IReadOnlyList<BossAttackStep> AttackPattern => attackPattern;
 }
